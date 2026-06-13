@@ -1,0 +1,21 @@
+{
+  "HomePage": {
+    "title": "To get started, edit the page.tsx file.",
+    "description": "Looking for a starting point or more instructions? Head over to",
+    "link1": "Templates",
+    "orText": "or the",
+    "link2": "Learning",
+    "center": "center."
+  },
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "LanguageToggle": {
+    "label": "Language",
+    "en": "English",
+    "fa": "Persian"
+  }
+}
