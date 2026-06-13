@@ -53,7 +53,7 @@ export function Hero() {
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          className="mb-6 text-5xl font-bold tracking-tight text-white sm:text-7xl lg:text-8xl"
+          className="mb-6 text-5xl font-bold tracking-tight text-white sm:text-7xl lg:text-7xl"
         >
           {t("name")}
         </motion.h1>

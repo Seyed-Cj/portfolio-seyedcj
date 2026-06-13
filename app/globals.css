@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
+  --background: #050505;
   --foreground: #ededed;
 }
 
@@ -40,41 +40,4 @@ body {
 [dir="ltr"] {
   direction: ltr;
   text-align: left;
-}
-
-@keyframes lineDrift1 {
-  0% {
-    background-position: 0% 0%;
-  }
-  100% {
-    background-position: 100% 100%;
-  }
-}
-
-@keyframes lineDrift2 {
-  0% {
-    background-position: 100% 0%;
-  }
-  100% {
-    background-position: 0% 100%;
-  }
-}
-
-@keyframes lineDrift3 {
-  0% {
-    background-position: 0% 0%;
-  }
-  100% {
-    background-position: 0% 200%;
-  }
-}
-
-@keyframes scanLine {
-  0%,
-  100% {
-    background-position: -100% 0%;
-  }
-  50% {
-    background-position: 200% 0%;
-  }
 }
