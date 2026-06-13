@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import {useLocale, useTranslations} from 'next-intl';
-import {usePathname, useRouter} from '@/i18n/navigation';
-import {routing} from '@/i18n/routing';
+import { useLocale, useTranslations } from "next-intl";
+import { usePathname, useRouter } from "@/i18n/navigation";
+import { routing } from "@/i18n/routing";
 
 export default function LanguageToggle() {
-  const t = useTranslations('LanguageToggle');
+  const t = useTranslations("LanguageToggle");
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
@@ -13,14 +13,14 @@ export default function LanguageToggle() {
   const nextLocale = routing.locales.find((l) => l !== locale) ?? routing.defaultLocale;
 
   function toggleLocale() {
-    router.replace(pathname, {locale: nextLocale});
+    router.replace(pathname, { locale: nextLocale });
   }
 
   return (
     <button
       onClick={toggleLocale}
       className="flex items-center gap-2 rounded-full border border-solid border-black/[.08] px-4 py-2 text-sm font-medium transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a]"
-      aria-label={t('label')}
+      aria-label={t("label")}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

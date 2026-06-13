@@ -16,6 +16,48 @@
   "LanguageToggle": {
     "label": "Language",
     "en": "English",
-    "fa": "Persian"
+    "fa": "فارسی"
+  },
+  "Hero": {
+    "role": "Software Engineer",
+    "name": "Seyedcj",
+    "description": "I craft elegant digital experiences with clean code and thoughtful design. Specializing in modern web applications.",
+    "downloadCv": "Download CV",
+    "viewProjects": "View Projects"
+  },
+  "About": {
+    "label": "About",
+    "title": "About Me",
+    "description1": "I am a software engineer with a passion for building high-quality digital products. I focus on creating elegant solutions to complex problems, with a keen eye for detail and user experience.",
+    "description2": "With years of experience in full-stack development, I bring a unique perspective to every project. I believe in clean code, thoughtful architecture, and continuous learning.",
+    "stat1": "Years Experience",
+    "stat2": "Projects Completed",
+    "stat3": "Technologies"
+  },
+  "Projects": {
+    "label": "Projects",
+    "title": "Featured Work",
+    "project1Title": "E-Commerce Platform",
+    "project1Description": "A modern e-commerce solution with real-time inventory management and seamless checkout experience.",
+    "project2Title": "Analytics Dashboard",
+    "project2Description": "A comprehensive analytics platform with interactive data visualizations and real-time updates.",
+    "project3Title": "Social Application",
+    "project3Description": "A social networking application with real-time messaging and content sharing capabilities."
+  },
+  "Skills": {
+    "label": "Skills",
+    "title": "Tech Stack",
+    "groupfrontend": "Frontend",
+    "groupbackend": "Backend",
+    "grouptools": "Tools"
+  },
+  "Contact": {
+    "label": "Contact",
+    "title": "Get in Touch",
+    "description": "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.",
+    "cta": "Say Hello"
+  },
+  "Footer": {
+    "copyright": "© 2025 Seyedcj. All rights reserved."
   }
 }
