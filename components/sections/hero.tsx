@@ -40,7 +40,7 @@ export function Hero() {
   const { next } = useSection();
 
   return (
-    <section className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden px-6">
+    <section className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden px-4 sm:px-6">
       <Glow className="top-1/4 left-1/2 -translate-x-1/2" size={600} />
 
       <div className="relative z-10 flex max-w-3xl flex-col items-center text-center">

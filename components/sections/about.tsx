@@ -19,7 +19,7 @@ export function About() {
   const t = useTranslations("About");
 
   return (
-    <section className="relative flex h-full w-full items-center justify-center overflow-hidden px-6">
+    <section className="relative flex h-full w-full items-start justify-center overflow-y-auto overflow-x-hidden px-4 sm:px-6 pt-6 pb-20 md:items-center md:overflow-hidden">
       <Glow className="top-0 right-0" size={400} />
 
       <div className="relative z-10 mx-auto max-w-4xl">

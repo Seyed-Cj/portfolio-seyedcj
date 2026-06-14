@@ -37,7 +37,7 @@ export function Contact() {
   const t = useTranslations("Contact");
 
   return (
-    <section className="relative flex h-full w-full items-center justify-center overflow-hidden px-6">
+    <section className="relative flex h-full w-full items-center justify-center overflow-hidden px-4 sm:px-6">
       <Glow className="right-0 bottom-0" size={400} />
 
       <div className="relative z-10 mx-auto max-w-2xl text-center">

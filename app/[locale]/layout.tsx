@@ -31,7 +31,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const dir = locale === "fa" ? "rtl" : "ltr";
 
   return (
-    <html lang={locale} dir={dir} className={`${fonts.pelak.variable} dark h-full overflow-hidden`}>
+    <html lang={locale} dir={dir} suppressHydrationWarning className={`${fonts.pelak.variable} dark h-full overflow-hidden`}>
       <body
         className={`${fonts.pelak.className} h-full overflow-hidden bg-black text-white antialiased`}
       >

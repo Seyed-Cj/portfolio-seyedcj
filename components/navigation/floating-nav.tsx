@@ -46,12 +46,34 @@ export function FloatingNav() {
     const handleTouchEnd = (e: TouchEvent) => {
       const delta = touchStartY - e.changedTouches[0].clientY;
       if (Math.abs(delta) > 50) {
+        const section = document.querySelector("section");
+        if (section) {
+          const isScrollable = section.scrollHeight > section.clientHeight + 1;
+          if (isScrollable) {
+            const atTop = section.scrollTop <= 0;
+            const atBottom =
+              section.scrollTop + section.clientHeight >= section.scrollHeight - 1;
+            if (delta > 0 && !atBottom) return;
+            if (delta < 0 && !atTop) return;
+          }
+        }
         if (delta > 0) next();
         else prev();
       }
     };
     let wheelTimeout: ReturnType<typeof setTimeout>;
     const handleWheel = (e: WheelEvent) => {
+      const section = document.querySelector("section");
+      if (section) {
+        const isScrollable = section.scrollHeight > section.clientHeight + 1;
+        if (isScrollable) {
+          const atTop = section.scrollTop <= 0;
+          const atBottom =
+            section.scrollTop + section.clientHeight >= section.scrollHeight - 1;
+          if (e.deltaY > 0 && !atBottom) return;
+          if (e.deltaY < 0 && !atTop) return;
+        }
+      }
       e.preventDefault();
       clearTimeout(wheelTimeout);
       wheelTimeout = setTimeout(() => {

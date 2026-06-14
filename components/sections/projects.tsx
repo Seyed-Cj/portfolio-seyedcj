@@ -106,7 +106,7 @@ export function Projects() {
   const t = useTranslations("Projects");
 
   return (
-    <section className="relative flex h-full w-full items-center justify-center overflow-hidden px-6 py-8">
+    <section className="relative flex h-full w-full items-start justify-center overflow-y-auto overflow-x-hidden px-4 sm:px-6 pt-6 pb-20 md:items-center md:overflow-hidden md:py-8">
       <Glow className="bottom-0 left-0" size={500} />
 
       <div className="relative z-10 mx-auto max-w-6xl">
