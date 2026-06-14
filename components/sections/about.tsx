@@ -32,7 +32,7 @@ export function About() {
           </h2>
         </motion.div>
 
-        <div className="grid gap-16 md:grid-cols-2">
+        <div className="grid sm:gap-16 md:grid-cols-2">
           <motion.div custom={1} initial="hidden" animate="visible" variants={fadeUp}>
             <p className="text-lg leading-relaxed text-white/50">{t("description1")}</p>
           </motion.div>
@@ -46,11 +46,11 @@ export function About() {
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          className="mt-16 grid grid-cols-3 gap-8 border-t border-white/10 pt-16"
+          className="sm:mt-16 grid grid-cols-3 gap-8 sm:border-t sm:border-white/10 pt-8 sm:pt-16"
         >
           {[
-            { value: "5+", label: t("stat1") },
-            { value: "30+", label: t("stat2") },
+            { value: "3+", label: t("stat1") },
+            { value: "20+", label: t("stat2") },
             { value: "10+", label: t("stat3") },
           ].map(({ value, label }) => (
             <div key={label}>

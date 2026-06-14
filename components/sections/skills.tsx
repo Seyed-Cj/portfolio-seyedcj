@@ -9,15 +9,39 @@ const ease = [0.25, 0.4, 0.25, 1] as const;
 const skillGroups = [
   {
     id: "frontend",
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js"],
+    skills: [
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Vite",
+      "Tailwind CSS",
+      "Bootstrap",
+      "Framer Motion",
+    ],
   },
   {
     id: "backend",
-    skills: ["Node.js", "Python", "PostgreSQL", "MongoDB", "REST APIs"],
+    skills: [
+      "Node.js",
+      "Express.js",
+      "NestJS",
+      "Python",
+      "MongoDB",
+      "MySQL",
+      "PostgreSQL",
+      "Swagger",
+      "Telegram Bot",
+    ],
   },
   {
     id: "tools",
-    skills: ["Git", "Docker", "AWS", "CI/CD", "Linux"],
+    skills: [
+      "Git",
+      "Docker",
+      "Linux",
+      "Postman",
+    ],
   },
 ];
 
