@@ -1,4 +1,11 @@
 import localFont from "next/font/local";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 const pelak = localFont({
   src: [
@@ -13,7 +20,9 @@ const pelak = localFont({
 });
 
 export const fonts = {
+  inter,
   pelak,
 } as const;
 
 export type FontName = keyof typeof fonts;
+

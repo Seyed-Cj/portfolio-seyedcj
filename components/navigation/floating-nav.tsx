@@ -3,6 +3,7 @@
 import { useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Home, User, FolderKanban, Wrench, Mail } from "lucide-react";
+import { useFormatter } from "next-intl";
 import { cn } from "@/lib/utils";
 import { useSection, SECTIONS } from "@/components/context/section-context";
 
@@ -15,6 +16,7 @@ const navItems = [
 ] as const;
 
 export function FloatingNav() {
+  const format = useFormatter();
   const { current, goTo, next, prev } = useSection();
 
   const handleKeyDown = useCallback(
@@ -51,8 +53,7 @@ export function FloatingNav() {
           const isScrollable = section.scrollHeight > section.clientHeight + 1;
           if (isScrollable) {
             const atTop = section.scrollTop <= 0;
-            const atBottom =
-              section.scrollTop + section.clientHeight >= section.scrollHeight - 1;
+            const atBottom = section.scrollTop + section.clientHeight >= section.scrollHeight - 1;
             if (delta > 0 && !atBottom) return;
             if (delta < 0 && !atTop) return;
           }
@@ -68,8 +69,7 @@ export function FloatingNav() {
         const isScrollable = section.scrollHeight > section.clientHeight + 1;
         if (isScrollable) {
           const atTop = section.scrollTop <= 0;
-          const atBottom =
-            section.scrollTop + section.clientHeight >= section.scrollHeight - 1;
+          const atBottom = section.scrollTop + section.clientHeight >= section.scrollHeight - 1;
           if (e.deltaY > 0 && !atBottom) return;
           if (e.deltaY < 0 && !atTop) return;
         }
@@ -158,7 +158,8 @@ export function FloatingNav() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
         >
-          {String(current + 1).padStart(2, "0")} / {String(SECTIONS.length).padStart(2, "0")}
+          {format.number(current + 1, { minimumIntegerDigits: 2 })} /{" "}
+          {format.number(SECTIONS.length, { minimumIntegerDigits: 2 })}
         </motion.div>
       </div>
     </>

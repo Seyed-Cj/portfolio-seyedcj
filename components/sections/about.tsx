@@ -19,7 +19,7 @@ export function About() {
   const t = useTranslations("About");
 
   return (
-    <section className="relative flex h-full w-full items-start justify-center overflow-y-auto overflow-x-hidden px-4 sm:px-6 pt-6 pb-20 md:items-center md:overflow-hidden">
+    <section className="relative flex h-full w-full items-start justify-center overflow-x-hidden overflow-y-auto px-4 pt-6 pb-20 sm:px-6 md:items-center md:overflow-hidden">
       <Glow className="top-0 right-0" size={400} />
 
       <div className="relative z-10 mx-auto max-w-4xl">
@@ -46,7 +46,7 @@ export function About() {
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          className="sm:mt-16 grid grid-cols-3 gap-8 sm:border-t sm:border-white/10 pt-8 sm:pt-16"
+          className="grid grid-cols-3 gap-8 pt-8 sm:mt-16 sm:border-t sm:border-white/10 sm:pt-16"
         >
           {[
             { value: "3+", label: t("stat1") },

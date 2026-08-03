@@ -36,12 +36,7 @@ const skillGroups = [
   },
   {
     id: "tools",
-    skills: [
-      "Git",
-      "Docker",
-      "Linux",
-      "Postman",
-    ],
+    skills: ["Git", "Docker", "Linux", "Postman", "Prisma", "Drizzle Orm"],
   },
 ];
 
@@ -63,7 +58,7 @@ function SkillGroup({ group, index }: { group: (typeof skillGroups)[number]; ind
       initial="hidden"
       animate="visible"
       variants={fadeUp}
-      className="rounded-2xl border border-white/5 bg-white/[0.02] p-8"
+      className="rounded-2xl border border-white/5 bg-white/2 p-8"
     >
       <h3 className="mb-6 text-sm font-medium tracking-[0.2em] text-white/30 uppercase">
         {t(`group${group.id}` as never)}
@@ -86,7 +81,7 @@ export function Skills() {
   const t = useTranslations("Skills");
 
   return (
-    <section className="relative flex h-full w-full items-start justify-center overflow-y-auto overflow-x-hidden px-4 sm:px-6 pt-6 pb-20 md:items-center md:overflow-hidden">
+    <section className="relative flex h-full w-full items-start justify-center overflow-x-hidden overflow-y-auto px-4 pt-6 pb-20 sm:px-6 md:items-center md:overflow-hidden">
       <Glow className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" size={500} />
 
       <div className="relative z-10 mx-auto max-w-4xl">

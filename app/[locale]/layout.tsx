@@ -4,6 +4,7 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { fonts } from "@/lib/fonts";
+import { LanguageSwitcher } from "@/components/language-switcher";
 import "../globals.css";
 
 export const metadata: Metadata = {
@@ -29,13 +30,22 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   const messages = await getMessages();
   const dir = locale === "fa" ? "rtl" : "ltr";
+  const activeFont = locale === "fa" ? fonts.pelak : fonts.inter;
 
   return (
-    <html lang={locale} dir={dir} suppressHydrationWarning className={`${fonts.pelak.variable} dark h-full overflow-hidden`}>
+    <html
+      lang={locale}
+      dir={dir}
+      suppressHydrationWarning
+      className={`${fonts.inter.variable} ${fonts.pelak.variable} dark h-full overflow-hidden`}
+    >
       <body
-        className={`${fonts.pelak.className} h-full overflow-hidden bg-black text-white antialiased`}
+        className={`${activeFont.className} h-full overflow-hidden bg-black text-white antialiased`}
       >
-        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider messages={messages}>
+          {children}
+          <LanguageSwitcher />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

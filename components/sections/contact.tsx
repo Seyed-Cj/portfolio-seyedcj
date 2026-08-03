@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
-import { Mail } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { Glow } from "@/components/effects/glow";
 
 const ease = [0.25, 0.4, 0.25, 1] as const;
@@ -15,6 +15,14 @@ const fadeUp = {
     y: 0,
     transition: { delay: 0.2 + i * 0.12, duration: 0.7, ease },
   }),
+};
+
+const CONTACT = {
+  email: "seyedxcj@gmail.com",
+  phoneHref: "tel:+989038105195",
+  telegram: "https://t.me/seyedcj_sc",
+  github: "https://github.com/Seyed-Cj",
+  linkedin: "https://www.linkedin.com/in/seyed-amirmohammad-moosavi-a66baa350",
 };
 
 function GithubIcon({ className }: { className?: string }) {
@@ -33,8 +41,22 @@ function LinkedinIcon({ className }: { className?: string }) {
   );
 }
 
+function TelegramIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 8.16c-.169 1.858-.896 6.728-1.266 8.928-.156.929-.465 1.24-.766 1.27-.651.06-1.145-.43-1.775-.845-.986-.646-1.543-1.048-2.5-1.678-1.106-.727-.39-1.127.242-1.78.165-.17 3.031-2.778 3.088-3.014.007-.03.014-.14-.052-.198-.066-.058-.164-.038-.234-.022-.1.023-1.69 1.074-4.77 3.154-.451.31-.86.461-1.226.453-.404-.009-1.18-.228-1.757-.416-.708-.232-1.27-.355-1.221-.75.025-.206.31-.417.853-.633 3.342-1.456 5.57-2.415 6.685-2.878 3.184-1.321 3.845-1.551 4.276-1.559.095-.001.307.022.444.134.115.094.147.221.163.311.015.09.034.293.019.452z" />
+    </svg>
+  );
+}
+
 export function Contact() {
   const t = useTranslations("Contact");
+
+  const socials = [
+    { icon: GithubIcon, href: CONTACT.github, label: "GitHub" },
+    { icon: LinkedinIcon, href: CONTACT.linkedin, label: "LinkedIn" },
+    { icon: TelegramIcon, href: CONTACT.telegram, label: "Telegram" },
+  ];
 
   return (
     <section className="relative flex h-full w-full items-center justify-center overflow-hidden px-4 sm:px-6">
@@ -51,11 +73,24 @@ export function Contact() {
           <p className="mb-10 text-lg leading-relaxed text-white/40">{t("description")}</p>
         </motion.div>
 
-        <motion.div custom={1} initial="hidden" animate="visible" variants={fadeUp}>
+        <motion.div
+          custom={1}
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+          className="flex flex-wrap items-center justify-center gap-4"
+        >
           <Button size="lg" className="group gap-3" asChild>
-            <a href="mailto:hello@example.com">
+            <a href={`mailto:${CONTACT.email}`}>
               <Mail className="h-4 w-4" />
               {t("cta")}
+            </a>
+          </Button>
+
+          <Button size="lg" className="group gap-3" asChild>
+            <a href={CONTACT.phoneHref} className="">
+              <Phone className="h-4 w-4" />
+              {t("call")}
             </a>
           </Button>
         </motion.div>
@@ -67,13 +102,12 @@ export function Contact() {
           variants={fadeUp}
           className="mt-12 flex justify-center gap-4"
         >
-          {[
-            { icon: GithubIcon, href: "#", label: "GitHub" },
-            { icon: LinkedinIcon, href: "#", label: "LinkedIn" },
-          ].map(({ icon: Icon, href, label }) => (
+          {socials.map(({ icon: Icon, href, label }) => (
             <a
               key={label}
               href={href}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label={label}
               className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all duration-300 hover:border-white/20 hover:bg-white/5 hover:text-white"
             >

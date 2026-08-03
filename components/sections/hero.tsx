@@ -19,6 +19,14 @@ const fadeUp = {
   }),
 };
 
+const CONTACT = {
+  email: "seyedxcj@gmail.com",
+  phoneHref: "tel:+989038105195",
+  telegram: "https://t.me/seyedcj_sc",
+  github: "https://github.com/Seyed-Cj",
+  linkedin: "https://www.linkedin.com/in/seyed-amirmohammad-moosavi-a66baa350",
+};
+
 function GithubIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -104,9 +112,9 @@ export function Hero() {
           className="mt-12 flex gap-4"
         >
           {[
-            { icon: GithubIcon, href: "#", label: "GitHub" },
-            { icon: LinkedinIcon, href: "#", label: "LinkedIn" },
-            { icon: Mail, href: "#", label: "Email" },
+            { icon: GithubIcon, href: CONTACT.github, label: "GitHub" },
+            { icon: LinkedinIcon, href: CONTACT.linkedin, label: "LinkedIn" },
+            { icon: Mail, href: `mailto:${CONTACT.email}`, label: "Email" },
           ].map(({ icon: Icon, href, label }) => (
             <a
               key={label}

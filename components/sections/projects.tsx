@@ -2,25 +2,36 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { ExternalLink, Code2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Glow } from "@/components/effects/glow";
+import { link } from "fs";
 
 const ease = [0.25, 0.4, 0.25, 1] as const;
 
 const projects = [
   {
     id: 1,
-    tags: ["Next.js", "TypeScript", "Tailwind"],
+    image: "/projects/1.png",
+    link: "https://github.com/Seyed-Cj/nextjs-mobile-store",
+    link2: "https://github.com/Seyed-Cj/nextjs-mobile-store",
+    tags: ["Next.js", "TypeScript", "Tailwind", "Swipper"],
   },
   {
     id: 2,
-    tags: ["React", "Node.js", "PostgreSQL"],
+    image: "/projects/2.png",
+    link: "https://github.com/Seyed-Cj/onlinetaxi-backend",
+    link2: "https://github.com/Seyed-Cj/onlinetaxi-backend",
+    tags: ["Nest.js", "PostgreSQL", "WebSocket", "RabbitMQ", "Docker", "Swagger", "Redis"],
   },
   {
     id: 3,
-    tags: ["Vue.js", "Firebase", "Vuetify"],
+    image: "/projects/3.png",
+    link: "#",
+    link2: "#",
+    tags: ["Next.js", "Nest.js", "PostgreSQL", "Redis"],
   },
 ];
 
@@ -45,19 +56,22 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
       variants={fadeUp}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02]"
+      className="group relative overflow-hidden rounded-2xl border border-white/5 bg-white/2"
     >
-      <div className="relative aspect-video overflow-hidden bg-white/[0.02]">
+      <div className="relative aspect-video overflow-hidden bg-white/2">
         <motion.div
           animate={isHovered ? { scale: 1.05 } : { scale: 1 }}
           transition={{ duration: 0.6, ease }}
-          className="absolute inset-0 flex items-center justify-center"
+          className="absolute inset-0"
         >
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-            <span className="text-2xl font-bold text-white/20">
-              {String(project.id).padStart(2, "0")}
-            </span>
-          </div>
+          <Image
+            src={project.image}
+            alt={t(`project${project.id}Title` as never)}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover"
+            priority={index === 1}
+          />
         </motion.div>
 
         <motion.div
@@ -67,14 +81,14 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
           className="absolute inset-0 flex items-center justify-center gap-4 bg-black/60 backdrop-blur-sm"
         >
           <a
-            href="#"
+            href={project.link}
             className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-black transition-transform hover:scale-110"
             aria-label="View project"
           >
             <ExternalLink className="h-4 w-4" />
           </a>
           <a
-            href="#"
+            href={project.link2}
             className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition-transform hover:scale-110"
             aria-label="View source"
           >
@@ -106,7 +120,7 @@ export function Projects() {
   const t = useTranslations("Projects");
 
   return (
-    <section className="relative flex h-full w-full items-start justify-center overflow-y-auto overflow-x-hidden px-4 sm:px-6 pt-6 pb-20 md:items-center md:overflow-hidden md:py-8">
+    <section className="relative flex h-full w-full items-start justify-center overflow-x-hidden overflow-y-auto px-4 pt-6 pb-20 sm:px-6 md:items-center md:overflow-hidden md:py-8">
       <Glow className="bottom-0 left-0" size={500} />
 
       <div className="relative z-10 mx-auto max-w-6xl">

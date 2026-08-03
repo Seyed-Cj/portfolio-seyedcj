@@ -39,7 +39,14 @@ export function Background() {
     glowCanvas.height = glowRadius * 2;
     const glowCtx = glowCanvas.getContext("2d");
     if (glowCtx) {
-      const grad = glowCtx.createRadialGradient(glowRadius, glowRadius, 0, glowRadius, glowRadius, glowRadius);
+      const grad = glowCtx.createRadialGradient(
+        glowRadius,
+        glowRadius,
+        0,
+        glowRadius,
+        glowRadius,
+        glowRadius,
+      );
       grad.addColorStop(0, "rgba(255, 255, 255, 0.4)");
       grad.addColorStop(0.3, "rgba(255, 255, 255, 0.15)");
       grad.addColorStop(1, "rgba(255, 255, 255, 0)");
@@ -152,7 +159,7 @@ export function Background() {
             p.x - p.glowSize,
             y - p.glowSize,
             p.glowSize * 2,
-            p.glowSize * 2
+            p.glowSize * 2,
           );
           ctx!.globalAlpha = 1.0;
 
@@ -175,7 +182,7 @@ export function Background() {
             x - p.glowSize,
             p.y - p.glowSize,
             p.glowSize * 2,
-            p.glowSize * 2
+            p.glowSize * 2,
           );
           ctx!.globalAlpha = 1.0;
 
