@@ -60,15 +60,15 @@ export function LanguageSwitcher() {
   }, [handleKeyDown]);
 
   return (
-    <div ref={containerRef} className="fixed bottom-6 left-6 z-50">
+    <div ref={containerRef} className="fixed top-6 right-6 md:top-auto md:bottom-6 md:right-6 z-50">
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 8 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 8 }}
-            transition={{ duration: 0.2, ease }}
-            className="absolute bottom-full left-0 mb-2 flex min-w-35 flex-col gap-1 rounded-2xl border border-white/10 bg-black/80 p-1.5 shadow-2xl backdrop-blur-xl"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.15, ease }}
+            className="absolute top-full right-0 mt-2 md:top-auto md:bottom-full md:mt-0 md:mb-2 origin-top-right md:origin-bottom-right flex min-w-35 flex-col gap-1 rounded-2xl border border-white/10 bg-black/80 p-1.5 shadow-2xl backdrop-blur-xl"
             role="menu"
             aria-orientation="vertical"
             aria-label={t("label")}
