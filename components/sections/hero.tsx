@@ -84,7 +84,7 @@ export function Hero() {
           className="flex flex-col gap-4 sm:flex-row"
         >
           <Button variant="secondary" size="lg" className="group" asChild>
-            <a href="" download="seyed-amirmohammad-mousavi.pdf">
+            <a href="/seyed-amirmohammad-mousavi.pdf" download="seyed-amirmohammad-mousavi.pdf">
               <svg
                 className="h-4 w-4 transition-transform group-hover:-translate-y-0.5"
                 fill="none"
