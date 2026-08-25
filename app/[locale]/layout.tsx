@@ -17,7 +17,7 @@ export async function generateMetadata({
 
   const title = isFa
     ? "سیدامیرمحمد موسوی — توسعه دهنده فول‌استک وب"
-    : "Seyed Amirmohammad Mousavi — Full-Stack Software Engineer";
+    : "Seyed Amirmohammad Mousavi — Full-Stack Web Developer";
 
   const description = isFa
     ? "سیدامیرمحمد موسوی؛ توسعه‌دهنده فول‌استک وب، متخصص در توسعه بک‌اند با NestJS و ساخت رابط‌های مدرن با Next.js، با تمرکز بر معماری و عملکرد."
@@ -61,6 +61,7 @@ export async function generateMetadata({
       languages: {
         en: "/en",
         fa: "/fa",
+        "x-default": "/en",
       },
     },
     openGraph: {
@@ -109,6 +110,38 @@ export default async function LocaleLayout({ children, params }: Props) {
   const messages = await getMessages();
   const dir = locale === "fa" ? "rtl" : "ltr";
   const activeFont = locale === "fa" ? fonts.pelak : fonts.inter;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://seyedcj.ir";
+
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: locale === "fa" ? "سیدامیرمحمد موسوی" : "Seyed Amirmohammad Mousavi",
+    alternateName: "Seyedcj",
+    jobTitle: locale === "fa" ? "توسعه‌دهنده فول‌استک وب" : "Full-Stack Web Developer",
+    url: `${siteUrl}/${locale}`,
+    image: `${siteUrl}/SeyedCj.png`,
+    sameAs: [
+      "https://github.com/Seyed-Cj",
+      "https://www.linkedin.com/in/seyed-amirmohammad-moosavi-a66baa350",
+      "https://t.me/seyedcj_sc",
+    ],
+    knowsAbout: [
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Node.js",
+      "NestJS",
+      "PostgreSQL",
+      "MongoDB",
+      "Docker",
+      "Redis",
+      "Tailwind CSS",
+      "Full-Stack Web Development",
+    ],
+    email: "mailto:seyedxcj@gmail.com",
+    telephone: "+989038105195",
+  };
 
   return (
     <html
@@ -117,6 +150,12 @@ export default async function LocaleLayout({ children, params }: Props) {
       suppressHydrationWarning
       className={`${fonts.inter.variable} ${fonts.pelak.variable} dark h-full overflow-hidden`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+      </head>
       <body
         className={`${activeFont.className} h-full overflow-hidden bg-black text-white antialiased`}
       >
