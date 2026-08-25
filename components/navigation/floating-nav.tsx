@@ -112,7 +112,7 @@ export function FloatingNav() {
               aria-current={current === id ? "true" : undefined}
               className={cn(
                 "group relative flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-300",
-                current === id ? "bg-white/10 text-white" : "text-white/30 hover:text-white/60",
+                current === id ? "bg-white/10 text-white" : "text-white/50 hover:text-white",
               )}
             >
               <Icon className="h-4 w-4" />
@@ -141,7 +141,7 @@ export function FloatingNav() {
               aria-current={current === id ? "true" : undefined}
               className={cn(
                 "flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-300",
-                current === id ? "bg-white/10 text-white" : "text-white/30 hover:text-white/60",
+                current === id ? "bg-white/10 text-white" : "text-white/50 hover:text-white",
               )}
             >
               <Icon className="h-4 w-4" />
@@ -153,7 +153,7 @@ export function FloatingNav() {
       {/* Section progress indicator */}
       <div className="fixed right-6 bottom-6 z-50 hidden md:block">
         <motion.div
-          className="text-xs font-medium text-white/20"
+          className="text-xs font-medium text-white/50"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}

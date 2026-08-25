@@ -25,7 +25,7 @@ export function Footer() {
   return (
     <footer className="border-t border-white/5 px-6 py-12">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 sm:flex-row">
-        <p className="text-sm text-white/30">{t("copyright")}</p>
+        <p className="text-sm text-white/60">{t("copyright")}</p>
         <div className="flex gap-4">
           {[
             { icon: GithubIcon, href: "#", label: "GitHub" },
@@ -36,7 +36,7 @@ export function Footer() {
               key={label}
               href={href}
               aria-label={label}
-              className="text-white/20 transition-colors duration-300 hover:text-white/60"
+              className="text-white/60 transition-colors duration-300 hover:text-white"
             >
               <Icon className="h-5 w-5" />
             </a>

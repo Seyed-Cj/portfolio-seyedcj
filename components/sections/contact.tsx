@@ -64,13 +64,13 @@ export function Contact() {
 
       <div className="relative z-10 mx-auto max-w-2xl text-center">
         <motion.div custom={0} initial="hidden" animate="visible" variants={fadeUp}>
-          <p className="mb-4 text-sm font-medium tracking-[0.2em] text-white/30 uppercase">
+          <p className="mb-4 text-sm font-medium tracking-[0.2em] text-white/60 uppercase">
             {t("label")}
           </p>
           <h2 className="mb-6 text-3xl font-bold tracking-tight text-white sm:text-5xl">
             {t("title")}
           </h2>
-          <p className="mb-10 text-lg leading-relaxed text-white/40">{t("description")}</p>
+          <p className="mb-10 text-lg leading-relaxed text-white/70">{t("description")}</p>
         </motion.div>
 
         <motion.div
@@ -109,7 +109,7 @@ export function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all duration-300 hover:border-white/20 hover:bg-white/5 hover:text-white"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/60 transition-all duration-300 hover:border-white/20 hover:bg-white/5 hover:text-white"
             >
               <Icon className="h-5 w-5" />
             </a>

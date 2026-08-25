@@ -45,7 +45,7 @@ function LinkedinIcon({ className }: { className?: string }) {
 
 export function Hero() {
   const t = useTranslations("Hero");
-  const { next } = useSection();
+  const { next, goTo } = useSection();
 
   return (
     <section className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden px-4 sm:px-6">
@@ -71,7 +71,7 @@ export function Hero() {
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          className="mb-10 max-w-xl text-lg leading-relaxed text-white/50 sm:text-xl"
+          className="mb-10 max-w-xl text-lg leading-relaxed text-white/70 sm:text-xl"
         >
           {t("description")}
         </motion.p>
@@ -101,7 +101,7 @@ export function Hero() {
               {t("downloadCv")}
             </a>
           </Button>
-          <Button size="lg" onClick={next}>
+          <Button size="lg" onClick={() => goTo(2)}>
             {t("viewProjects")}
           </Button>
         </motion.div>
@@ -122,7 +122,7 @@ export function Hero() {
               key={label}
               href={href}
               aria-label={label}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/40 transition-all duration-300 hover:border-white/20 hover:bg-white/5 hover:text-white"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/60 transition-all duration-300 hover:border-white/20 hover:bg-white/5 hover:text-white"
             >
               <Icon className="h-5 w-5" />
             </a>

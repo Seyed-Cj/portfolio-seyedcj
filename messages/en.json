@@ -2,7 +2,7 @@
   "Hero": {
     "role": "Software Engineer",
     "name": "Seyed Amirmohammad Mousavi",
-    "description": "Full-Stack Web Developer building modern web applications with the latest technologies.",
+    "description": "Full-Stack Software Engineer specializing in scalable NestJS backend architectures, high-performance distributed systems, and modern Next.js interfaces.",
     "downloadCv": "Download CV",
     "viewProjects": "View Projects"
   },
@@ -18,12 +18,15 @@
   "Projects": {
     "label": "Projects",
     "title": "Featured Work",
+    "liveDemo": "Live Demo",
+    "sourceCode": "Source Code",
+    "previewComingSoon": "Preview in progress",
     "project1Title": "E-Commerce Platform",
-    "project1Description": "An online store for selling Apple products.",
+    "project1Description": "A high-performance modern e-commerce storefront for Apple devices featuring instant cart updates, dynamic product filtering, and a responsive mobile-first UI.",
     "project2Title": "Online Taxi Backend",
-    "project2Description": "A professional Monorepo backend architecture similar to Snapp.",
+    "project2Description": "A scalable monorepo backend architecture modeled after Snapp, featuring real-time driver-passenger dispatch via WebSockets, asynchronous message queues with RabbitMQ, and Redis caching.",
     "project3Title": "Full-Stack E-Commerce",
-    "project3Description": "A full-stack platform for selling gaming accounts."
+    "project3Description": "An end-to-end full-stack digital marketplace for trading gaming accounts, complete with secure authentication, automated order workflows, and real-time inventory management."
   },
   "Skills": {
     "label": "Skills",

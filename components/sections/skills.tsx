@@ -60,14 +60,14 @@ function SkillGroup({ group, index }: { group: (typeof skillGroups)[number]; ind
       variants={fadeUp}
       className="rounded-2xl border border-white/5 bg-white/2 p-8"
     >
-      <h3 className="mb-6 text-sm font-medium tracking-[0.2em] text-white/30 uppercase">
+      <h3 className="mb-6 text-sm font-medium tracking-[0.2em] text-white/60 uppercase">
         {t(`group${group.id}` as never)}
       </h3>
       <div className="flex flex-wrap gap-2">
         {group.skills.map((skill) => (
           <span
             key={skill}
-            className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/60 transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:text-white"
+            className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70 transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:text-white"
           >
             {skill}
           </span>
@@ -92,7 +92,7 @@ export function Skills() {
           variants={fadeUp}
           className="mb-12"
         >
-          <p className="mb-4 text-sm font-medium tracking-[0.2em] text-white/30 uppercase">
+          <p className="mb-4 text-sm font-medium tracking-[0.2em] text-white/60 uppercase">
             {t("label")}
           </p>
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">{t("title")}</h2>
