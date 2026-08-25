@@ -7,7 +7,6 @@ import { useTranslations } from "next-intl";
 import { ExternalLink, Code2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Glow } from "@/components/effects/glow";
-import { link } from "fs";
 
 const ease = [0.25, 0.4, 0.25, 1] as const;
 

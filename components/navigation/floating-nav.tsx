@@ -132,7 +132,7 @@ export function FloatingNav() {
         className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 md:hidden"
         aria-label="Section navigation"
       >
-        <div className="flex gap-1 rounded-2xl border border-white/10 bg-white/5 p-2 shadow-2xl backdrop-blur-xl">
+        <div className="flex gap-1 rounded-2xl border border-white/10 bg-[#0a0a0a]/95 p-2 shadow-2xl">
           {navItems.map(({ id, icon: Icon, label }) => (
             <button
               key={id}

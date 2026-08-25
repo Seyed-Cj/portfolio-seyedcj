@@ -40,3 +40,16 @@ body {
   text-align: left;
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
 }
+
+@keyframes subtle-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+.animate-subtle-bounce {
+  animation: subtle-bounce 2s ease-in-out infinite;
+}

@@ -136,15 +136,14 @@ export function Hero() {
         transition={{ delay: 1.2, duration: 0.8 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
-        <motion.button
+        <button
+          type="button"
           onClick={next}
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="text-white/20 transition-colors hover:text-white/40"
+          className="animate-subtle-bounce text-white/20 transition-colors hover:text-white/40 cursor-pointer"
           aria-label="Next section"
         >
           <ArrowDown className="h-5 w-5" />
-        </motion.button>
+        </button>
       </motion.div>
     </section>
   );
