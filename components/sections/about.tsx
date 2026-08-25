@@ -51,7 +51,7 @@ export function About() {
           {[
             { value: "3+", label: t("stat1") },
             { value: "20+", label: t("stat2") },
-            { value: "10+", label: t("stat3") },
+            { value: "99%", label: t("stat3") },
           ].map(({ value, label }) => (
             <div key={label}>
               <p className="text-3xl font-bold text-white sm:text-4xl">{value}</p>

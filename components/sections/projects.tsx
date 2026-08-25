@@ -85,7 +85,7 @@ function ProjectCard({ project, index }: { project: ProjectItem; index: number }
             />
           </motion.div>
         ) : (
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-white/[0.03] p-4 text-center">
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-white/3 p-4 text-center">
             <ImageIcon className="h-8 w-8 text-white/30" />
             <span className="text-xs font-medium tracking-wider text-white/50 uppercase">
               {t("previewComingSoon")}

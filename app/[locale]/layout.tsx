@@ -7,11 +7,89 @@ import { fonts } from "@/lib/fonts";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import "../globals.css";
 
-export const metadata: Metadata = {
-  title: "Seyedcj — Software Engineer",
-  description:
-    "Personal portfolio of Seyedcj, a software engineer crafting elegant digital experiences.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isFa = locale === "fa";
+
+  const title = isFa
+    ? "سیدامیرمحمد موسوی — مهندس نرم‌افزار فول‌استک"
+    : "Seyed Amirmohammad Mousavi — Full-Stack Software Engineer";
+
+  const description = isFa
+    ? "پورتفولیو شخصی سیدامیرمحمد موسوی؛ توسعه‌دهنده فول‌استک متخصص در معماری‌های بک‌اند NestJS، سیستم‌های توزیع‌شده و فرانت‌اند Next.js."
+    : "Personal portfolio of Seyed Amirmohammad Mousavi — Full-Stack Software Engineer specializing in scalable NestJS backend architectures, distributed systems, and modern Next.js interfaces.";
+
+  const keywords = isFa
+    ? [
+        "سیدامیرمحمد موسوی",
+        "Seyedcj",
+        "مهندس نرم‌افزار",
+        "برنامه‌نویس فول‌استک",
+        "توسعه‌دهنده وب",
+        "NestJS",
+        "Next.js",
+        "TypeScript",
+        "React",
+        "PostgreSQL",
+      ]
+    : [
+        "Seyed Amirmohammad Mousavi",
+        "Seyedcj",
+        "Software Engineer",
+        "Full-Stack Developer",
+        "NestJS",
+        "Next.js",
+        "TypeScript",
+        "React",
+        "PostgreSQL",
+        "Distributed Systems",
+      ];
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://seyedcj.ir";
+
+  return {
+    title,
+    description,
+    keywords,
+    metadataBase: new URL(siteUrl),
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        en: "/en",
+        fa: "/fa",
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url: `/${locale}`,
+      siteName: isFa ? "پورتفولیو سیدامیرمحمد موسوی" : "Seyed Amirmohammad Mousavi Portfolio",
+      images: [
+        {
+          url: "/SeyedCj.png",
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+      locale: isFa ? "fa_IR" : "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/SeyedCj.png"],
+    },
+    icons: {
+      icon: "/favicon.ico",
+    },
+  };
+}
 
 type Props = {
   children: React.ReactNode;
