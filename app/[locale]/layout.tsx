@@ -16,12 +16,12 @@ export async function generateMetadata({
   const isFa = locale === "fa";
 
   const title = isFa
-    ? "سیدامیرمحمد موسوی — مهندس نرم‌افزار فول‌استک"
+    ? "سیدامیرمحمد موسوی — توسعه دهنده فول‌استک وب"
     : "Seyed Amirmohammad Mousavi — Full-Stack Software Engineer";
 
   const description = isFa
-    ? "رزومه شخصی سیدامیرمحمد موسوی؛ توسعه‌دهنده فول‌استک متخصص در معماری‌های بک‌اند NestJS، سیستم‌های توزیع‌شده و فرانت‌اند Next.js."
-    : "Personal portfolio of Seyed Amirmohammad Mousavi — Full-Stack Software Engineer specializing in scalable NestJS backend architectures, distributed systems, and modern Next.js interfaces.";
+    ? "سیدامیرمحمد موسوی؛ توسعه‌دهنده فول‌استک وب، متخصص در توسعه بک‌اند با NestJS و ساخت رابط‌های مدرن با Next.js، با تمرکز بر معماری و عملکرد."
+    : "Seyed Amirmohammad Mousavi — Full-Stack Web Developer specializing in NestJS backend development and modern Next.js interfaces, with a focus on architecture and performance.";
 
   const keywords = isFa
     ? [
