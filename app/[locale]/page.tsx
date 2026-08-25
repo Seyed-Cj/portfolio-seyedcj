@@ -6,11 +6,12 @@ import { Background } from "@/components/effects/background";
 import { FloatingNav } from "@/components/navigation/floating-nav";
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
+import { Experience } from "@/components/sections/experience";
 import { Projects } from "@/components/sections/projects";
 import { Skills } from "@/components/sections/skills";
 import { Contact } from "@/components/sections/contact";
 
-const sections = [Hero, About, Projects, Skills, Contact];
+const sections = [Hero, About, Experience, Projects, Skills, Contact];
 
 const ease = [0.25, 0.4, 0.25, 1] as const;
 

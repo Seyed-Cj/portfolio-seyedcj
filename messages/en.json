@@ -15,6 +15,22 @@
     "stat2": "Projects Delivered",
     "stat3": "Client Satisfaction"
   },
+  "Experience": {
+    "label": "Experience",
+    "title": "Work & Milestones",
+    "exp1Role": "Full-Stack Engineer",
+    "exp1Company": "Freelance & Remote",
+    "exp1Period": "2024 — Present",
+    "exp1Description": "Architecting high-concurrency NestJS microservices and building responsive Next.js frontend web applications.",
+    "exp2Role": "Programming Instructor & Creator",
+    "exp2Company": "Online Education & Mentorship",
+    "exp2Period": "2023 — Present",
+    "exp2Description": "Authoring comprehensive software engineering courses, project tutorials, and mentoring aspiring developers.",
+    "exp3Role": "Backend Developer",
+    "exp3Company": "Contract Projects",
+    "exp3Period": "2022 — 2023",
+    "exp3Description": "Designed RESTful and WebSocket APIs, optimized relational database schemas, and integrated secure payment gateways."
+  },
   "Projects": {
     "label": "Projects",
     "title": "Featured Work",

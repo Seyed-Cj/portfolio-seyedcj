@@ -20,7 +20,7 @@ export async function generateMetadata({
     : "Seyed Amirmohammad Mousavi — Full-Stack Software Engineer";
 
   const description = isFa
-    ? "پورتفولیو شخصی سیدامیرمحمد موسوی؛ توسعه‌دهنده فول‌استک متخصص در معماری‌های بک‌اند NestJS، سیستم‌های توزیع‌شده و فرانت‌اند Next.js."
+    ? "رزومه شخصی سیدامیرمحمد موسوی؛ توسعه‌دهنده فول‌استک متخصص در معماری‌های بک‌اند NestJS، سیستم‌های توزیع‌شده و فرانت‌اند Next.js."
     : "Personal portfolio of Seyed Amirmohammad Mousavi — Full-Stack Software Engineer specializing in scalable NestJS backend architectures, distributed systems, and modern Next.js interfaces.";
 
   const keywords = isFa
@@ -67,7 +67,7 @@ export async function generateMetadata({
       title,
       description,
       url: `/${locale}`,
-      siteName: isFa ? "پورتفولیو سیدامیرمحمد موسوی" : "Seyed Amirmohammad Mousavi Portfolio",
+      siteName: isFa ? "رزومه سیدامیرمحمد موسوی" : "Seyed Amirmohammad Mousavi Portfolio",
       images: [
         {
           url: "/SeyedCj.png",

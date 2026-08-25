@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Glow } from "@/components/effects/glow";
 import { useTranslations } from "next-intl";
-import { useSection } from "@/components/context/section-context";
+import { useSection, SECTIONS } from "@/components/context/section-context";
 
 const ease = [0.25, 0.4, 0.25, 1] as const;
 
@@ -101,7 +101,7 @@ export function Hero() {
               {t("downloadCv")}
             </a>
           </Button>
-          <Button size="lg" onClick={() => goTo(2)}>
+          <Button size="lg" onClick={() => goTo(SECTIONS.indexOf("projects"))}>
             {t("viewProjects")}
           </Button>
         </motion.div>

@@ -1,14 +1,14 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 
-const SECTIONS = ["hero", "about", "projects", "skills", "contact"] as const;
+const SECTIONS = ["hero", "about", "experience", "projects", "skills", "contact"] as const;
 type SectionId = (typeof SECTIONS)[number];
 
 interface SectionContextValue {
   current: number;
   total: number;
-  goTo: (index: number, push?: boolean) => void;
+  goTo: (index: number) => void;
   next: () => void;
   prev: () => void;
 }
@@ -17,49 +17,33 @@ const SectionContext = createContext<SectionContextValue | null>(null);
 
 export function SectionProvider({ children }: { children: React.ReactNode }) {
   const [current, setCurrent] = useState(0);
+  const isFirstRender = useRef(true);
 
-  const goTo = useCallback((index: number, push = true) => {
-    const validIndex = Math.max(0, Math.min(index, SECTIONS.length - 1));
-    setCurrent(validIndex);
-
-    if (typeof window !== "undefined") {
-      const targetHash = `#${SECTIONS[validIndex]}`;
-      if (window.location.hash !== targetHash) {
-        if (push) {
-          window.history.pushState(null, "", targetHash);
-        } else {
-          window.history.replaceState(null, "", targetHash);
-        }
-      }
-    }
+  const goTo = useCallback((index: number) => {
+    setCurrent(Math.max(0, Math.min(index, SECTIONS.length - 1)));
   }, []);
 
   const next = useCallback(() => {
-    setCurrent((prev) => {
-      const nextIdx = Math.min(prev + 1, SECTIONS.length - 1);
-      if (typeof window !== "undefined") {
-        const targetHash = `#${SECTIONS[nextIdx]}`;
-        if (window.location.hash !== targetHash) {
-          window.history.pushState(null, "", targetHash);
-        }
-      }
-      return nextIdx;
-    });
+    setCurrent((prev) => Math.min(prev + 1, SECTIONS.length - 1));
   }, []);
 
   const prev = useCallback(() => {
-    setCurrent((prev) => {
-      const prevIdx = Math.max(prev - 1, 0);
-      if (typeof window !== "undefined") {
-        const targetHash = `#${SECTIONS[prevIdx]}`;
-        if (window.location.hash !== targetHash) {
-          window.history.pushState(null, "", targetHash);
-        }
-      }
-      return prevIdx;
-    });
+    setCurrent((prev) => Math.max(prev - 1, 0));
   }, []);
 
+  // Sync state to URL hash cleanly after render
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    const targetHash = `#${SECTIONS[current]}`;
+    if (window.location.hash !== targetHash) {
+      window.history.pushState(null, "", targetHash);
+    }
+  }, [current]);
+
+  // Read URL hash on mount and listen to browser back/forward (popstate/hashchange)
   useEffect(() => {
     const parseHash = () => {
       const hash = window.location.hash.replace("#", "");

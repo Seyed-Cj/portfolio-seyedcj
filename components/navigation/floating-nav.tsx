@@ -2,21 +2,20 @@
 
 import { useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Home, User, FolderKanban, Wrench, Mail } from "lucide-react";
-import { useFormatter } from "next-intl";
+import { Home, User, Briefcase, FolderKanban, Wrench, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useSection, SECTIONS } from "@/components/context/section-context";
 
 const navItems = [
   { id: 0, icon: Home, label: "Home" },
   { id: 1, icon: User, label: "About" },
-  { id: 2, icon: FolderKanban, label: "Projects" },
-  { id: 3, icon: Wrench, label: "Skills" },
-  { id: 4, icon: Mail, label: "Contact" },
+  { id: 2, icon: Briefcase, label: "Experience" },
+  { id: 3, icon: FolderKanban, label: "Projects" },
+  { id: 4, icon: Wrench, label: "Skills" },
+  { id: 5, icon: Mail, label: "Contact" },
 ] as const;
 
 export function FloatingNav() {
-  const format = useFormatter();
   const { current, goTo, next, prev } = useSection();
 
   const handleKeyDown = useCallback(
@@ -27,7 +26,7 @@ export function FloatingNav() {
       } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
         e.preventDefault();
         prev();
-      } else if (e.key >= "1" && e.key <= "5") {
+      } else if (e.key >= "1" && e.key <= "6") {
         e.preventDefault();
         goTo(parseInt(e.key) - 1);
       }
@@ -149,19 +148,6 @@ export function FloatingNav() {
           ))}
         </div>
       </motion.nav>
-
-      {/* Section progress indicator */}
-      <div className="fixed right-6 bottom-6 z-50 hidden md:block">
-        <motion.div
-          className="text-xs font-medium text-white/50"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-        >
-          {format.number(current + 1, { minimumIntegerDigits: 2 })} /{" "}
-          {format.number(SECTIONS.length, { minimumIntegerDigits: 2 })}
-        </motion.div>
-      </div>
     </>
   );
 }
