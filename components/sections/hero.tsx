@@ -5,7 +5,7 @@ import { ArrowDown, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Glow } from "@/components/effects/glow";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { useSection, SECTIONS } from "@/components/context/section-context";
 
 const ease = [0.25, 0.4, 0.25, 1] as const;
@@ -45,7 +45,11 @@ function LinkedinIcon({ className }: { className?: string }) {
 
 export function Hero() {
   const t = useTranslations("Hero");
+  const locale = useLocale();
   const { next, goTo } = useSection();
+
+  const cvHref = locale === "en" ? "/Seyed-Amirmohammad-Mousavi-Resume-EN.pdf" : "/seyed-amirmohammad-mousavi.pdf";
+  const cvDownload = locale === "en" ? "Seyed-Amirmohammad-Mousavi-Resume-EN.pdf" : "seyed-amirmohammad-mousavi.pdf";
 
   return (
     <section className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden px-4 sm:px-6">
@@ -84,7 +88,7 @@ export function Hero() {
           className="flex flex-col gap-4 sm:flex-row"
         >
           <Button variant="secondary" size="lg" className="group" asChild>
-            <a href="/seyed-amirmohammad-mousavi.pdf" download="seyed-amirmohammad-mousavi.pdf">
+            <a href={cvHref} download={cvDownload}>
               <svg
                 className="h-4 w-4 transition-transform group-hover:-translate-y-0.5"
                 fill="none"
