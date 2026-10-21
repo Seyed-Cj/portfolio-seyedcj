@@ -24,20 +24,24 @@ export function About() {
 
       <div className="relative z-10 mx-auto max-w-4xl">
         <motion.div custom={0} initial="hidden" animate="visible" variants={fadeUp}>
-          <p className="mb-4 text-sm font-medium tracking-[0.2em] text-white/60 uppercase">
+          <p className="mb-4 text-sm font-medium tracking-[0.2em] text-[#86868b] uppercase dark:text-white/60">
             {t("label")}
           </p>
-          <h2 className="mb-12 text-3xl font-bold tracking-tight text-white sm:text-5xl">
+          <h2 className="mb-12 text-3xl font-bold tracking-tight text-[#1d1d1f] sm:text-5xl dark:text-white">
             {t("title")}
           </h2>
         </motion.div>
 
         <div className="grid sm:gap-16 md:grid-cols-2">
           <motion.div custom={1} initial="hidden" animate="visible" variants={fadeUp}>
-            <p className="text-lg leading-relaxed text-white/70">{t("description1")}</p>
+            <p className="text-lg leading-relaxed text-[#515154] dark:text-white/70">
+              {t("description1")}
+            </p>
           </motion.div>
           <motion.div custom={2} initial="hidden" animate="visible" variants={fadeUp}>
-            <p className="text-lg leading-relaxed text-white/70">{t("description2")}</p>
+            <p className="text-lg leading-relaxed text-[#515154] dark:text-white/70">
+              {t("description2")}
+            </p>
           </motion.div>
         </div>
 
@@ -46,7 +50,7 @@ export function About() {
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          className="grid grid-cols-3 gap-8 pt-8 sm:mt-16 sm:border-t sm:border-white/10 sm:pt-16"
+          className="grid grid-cols-3 gap-8 pt-8 sm:mt-16 sm:border-t sm:border-black/10 sm:pt-16 dark:sm:border-white/10"
         >
           {[
             { value: "3+", label: t("stat1") },
@@ -54,8 +58,10 @@ export function About() {
             { value: "99%", label: t("stat3") },
           ].map(({ value, label }) => (
             <div key={label}>
-              <p className="text-3xl font-bold text-white sm:text-4xl">{value}</p>
-              <p className="mt-2 text-sm text-white/60">{label}</p>
+              <p className="text-3xl font-bold text-[#1d1d1f] sm:text-4xl dark:text-white">
+                {value}
+              </p>
+              <p className="mt-2 text-sm text-[#86868b] dark:text-white/60">{label}</p>
             </div>
           ))}
         </motion.div>

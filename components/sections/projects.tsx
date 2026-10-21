@@ -65,9 +65,9 @@ function ProjectCard({ project, index }: { project: ProjectItem; index: number }
       variants={fadeUp}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/2"
+      className="group relative flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-white/80 shadow-md shadow-black/5 transition-all duration-300 dark:border-white/10 dark:bg-white/2 dark:shadow-none"
     >
-      <div className="relative aspect-video w-full overflow-hidden bg-white/5">
+      <div className="relative aspect-video w-full overflow-hidden bg-black/5 dark:bg-white/5">
         {hasImage ? (
           <motion.div
             animate={isHovered ? { scale: 1.05 } : { scale: 1 }}
@@ -85,9 +85,9 @@ function ProjectCard({ project, index }: { project: ProjectItem; index: number }
             />
           </motion.div>
         ) : (
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-white/3 p-4 text-center">
-            <ImageIcon className="h-8 w-8 text-white/30" />
-            <span className="text-xs font-medium tracking-wider text-white/50 uppercase">
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/5 p-4 text-center dark:bg-white/3">
+            <ImageIcon className="h-8 w-8 text-[#86868b] dark:text-white/30" />
+            <span className="text-xs font-medium tracking-wider text-[#86868b] uppercase dark:text-white/50">
               {t("previewComingSoon")}
             </span>
           </div>
@@ -129,10 +129,10 @@ function ProjectCard({ project, index }: { project: ProjectItem; index: number }
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="mb-2 text-lg font-semibold text-white">
+        <h3 className="mb-2 text-lg font-semibold text-[#1d1d1f] dark:text-white">
           {t(`project${project.id}Title` as never)}
         </h3>
-        <p className="mb-4 flex-1 text-sm leading-relaxed text-white/70">
+        <p className="mb-4 flex-1 text-sm leading-relaxed text-[#515154] dark:text-white/70">
           {t(`project${project.id}Description` as never)}
         </p>
 
@@ -145,13 +145,13 @@ function ProjectCard({ project, index }: { project: ProjectItem; index: number }
         </div>
 
         {hasLinks && (
-          <div className="flex items-center gap-2 border-t border-white/5 pt-3 md:hidden">
+          <div className="flex items-center gap-2 border-t border-black/5 pt-3 md:hidden dark:border-white/5">
             {project.demoUrl && (
               <a
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-medium text-black transition-colors hover:bg-white/90"
+                className="inline-flex items-center gap-1.5 rounded-full bg-[#1d1d1f] px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-black dark:bg-white dark:text-black dark:hover:bg-white/90"
               >
                 <ExternalLink className="h-3.5 w-3.5" />
                 {t("liveDemo")}
@@ -162,7 +162,7 @@ function ProjectCard({ project, index }: { project: ProjectItem; index: number }
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                className="inline-flex items-center gap-1.5 rounded-full border border-black/15 bg-black/5 px-3 py-1.5 text-xs font-medium text-[#1d1d1f] transition-colors hover:bg-black/10 dark:border-white/15 dark:bg-white/5 dark:text-white/80 dark:hover:bg-white/10 dark:hover:text-white"
               >
                 <Code2 className="h-3.5 w-3.5" />
                 {t("sourceCode")}
@@ -190,10 +190,12 @@ export function Projects() {
           variants={fadeUp}
           className="mb-12"
         >
-          <p className="mb-4 text-sm font-medium tracking-[0.2em] text-white/60 uppercase">
+          <p className="mb-4 text-sm font-medium tracking-[0.2em] text-[#86868b] uppercase dark:text-white/60">
             {t("label")}
           </p>
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">{t("title")}</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-[#1d1d1f] sm:text-5xl dark:text-white">
+            {t("title")}
+          </h2>
         </motion.div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

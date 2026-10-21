@@ -63,6 +63,11 @@
     "en": "English",
     "fa": "Persian"
   },
+  "ThemeToggle": {
+    "toggle": "Toggle theme",
+    "light": "Light mode",
+    "dark": "Dark mode"
+  },
   "Footer": {
     "copyright": "© 2026 Seyed Amirmohammad Mousavi. All rights reserved."
   }

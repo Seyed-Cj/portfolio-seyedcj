@@ -4,7 +4,8 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { fonts } from "@/lib/fonts";
-import { LanguageSwitcher } from "@/components/language-switcher";
+import { AppControls } from "@/components/app-controls";
+import { ThemeProvider } from "@/components/context/theme-context";
 import "../globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://seyedcj.ir";
@@ -341,16 +342,30 @@ export default async function LocaleLayout({ children, params }: Props) {
       lang={locale}
       dir={dir}
       suppressHydrationWarning
-      className={`${fonts.inter.variable} ${fonts.pelak.variable} dark h-full overflow-hidden`}
+      className={`${fonts.inter.variable} ${fonts.pelak.variable} h-full overflow-hidden`}
     >
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('theme');
+                  var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                  document.documentElement.classList.remove('light', 'dark');
+                  document.documentElement.classList.add(theme);
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
       <body
-        className={`${activeFont.className} h-full overflow-hidden bg-black text-white antialiased`}
+        className={`${activeFont.className} h-full overflow-hidden bg-[#f5f5f7] text-[#1d1d1f] antialiased transition-colors duration-300 dark:bg-black dark:text-white`}
       >
         {/* Semantic accessible SEO content for search crawlers & screen readers */}
         <div className="sr-only" aria-hidden="false">
@@ -385,8 +400,10 @@ export default async function LocaleLayout({ children, params }: Props) {
         </div>
 
         <NextIntlClientProvider messages={messages}>
-          {children}
-          <LanguageSwitcher />
+          <ThemeProvider>
+            {children}
+            <AppControls />
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -58,16 +58,16 @@ function SkillGroup({ group, index }: { group: (typeof skillGroups)[number]; ind
       initial="hidden"
       animate="visible"
       variants={fadeUp}
-      className="rounded-2xl border border-white/5 bg-white/2 p-8"
+      className="rounded-2xl border border-black/10 bg-white/80 p-8 shadow-md shadow-black/5 dark:border-white/5 dark:bg-white/2 dark:shadow-none"
     >
-      <h3 className="mb-6 text-sm font-medium tracking-[0.2em] text-white/60 uppercase">
+      <h3 className="mb-6 text-sm font-medium tracking-[0.2em] text-[#86868b] uppercase dark:text-white/60">
         {t(`group${group.id}` as never)}
       </h3>
       <div className="flex flex-wrap gap-2">
         {group.skills.map((skill) => (
           <span
             key={skill}
-            className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70 transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:text-white"
+            className="rounded-full border border-black/10 bg-black/5 px-4 py-2 text-sm text-[#1d1d1f]/80 transition-all duration-300 hover:border-black/20 hover:bg-black/10 hover:text-[#1d1d1f] dark:border-white/10 dark:bg-white/5 dark:text-white/70 dark:hover:border-white/20 dark:hover:bg-white/10 dark:hover:text-white"
           >
             {skill}
           </span>
@@ -92,10 +92,12 @@ export function Skills() {
           variants={fadeUp}
           className="mb-12"
         >
-          <p className="mb-4 text-sm font-medium tracking-[0.2em] text-white/60 uppercase">
+          <p className="mb-4 text-sm font-medium tracking-[0.2em] text-[#86868b] uppercase dark:text-white/60">
             {t("label")}
           </p>
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl">{t("title")}</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-[#1d1d1f] sm:text-5xl dark:text-white">
+            {t("title")}
+          </h2>
         </motion.div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -102,7 +102,7 @@ export function FloatingNav() {
         className="fixed top-1/2 right-6 z-50 hidden -translate-y-1/2 md:block"
         aria-label="Section navigation"
       >
-        <div className="flex flex-col gap-1 rounded-2xl border border-white/10 bg-white/5 p-2 shadow-2xl backdrop-blur-xl">
+        <div className="flex flex-col gap-1 rounded-2xl border border-black/10 bg-white/80 p-2 shadow-xl shadow-black/5 backdrop-blur-xl dark:border-white/10 dark:bg-white/5 dark:shadow-2xl">
           {navItems.map(({ id, icon: Icon, label }) => (
             <button
               key={id}
@@ -111,11 +111,13 @@ export function FloatingNav() {
               aria-current={current === id ? "true" : undefined}
               className={cn(
                 "group relative flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-300",
-                current === id ? "bg-white/10 text-white" : "text-white/50 hover:text-white",
+                current === id
+                  ? "bg-black/10 text-[#1d1d1f] shadow-sm dark:bg-white/10 dark:text-white"
+                  : "text-[#515154] hover:text-[#1d1d1f] dark:text-white/50 dark:hover:text-white",
               )}
             >
               <Icon className="h-4 w-4" />
-              <span className="pointer-events-none absolute right-full mr-3 rounded-lg bg-white/10 px-3 py-1.5 text-xs font-medium whitespace-nowrap text-white opacity-0 backdrop-blur-sm transition-all duration-200 group-hover:opacity-100">
+              <span className="pointer-events-none absolute right-full mr-3 rounded-lg bg-[#1d1d1f] px-3 py-1.5 text-xs font-medium whitespace-nowrap text-white opacity-0 shadow-md backdrop-blur-sm transition-all duration-200 group-hover:opacity-100 dark:bg-white/10 dark:text-white">
                 {label}
               </span>
             </button>
@@ -131,7 +133,7 @@ export function FloatingNav() {
         className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 md:hidden"
         aria-label="Section navigation"
       >
-        <div className="flex gap-1 rounded-2xl border border-white/10 bg-[#0a0a0a]/95 p-2 shadow-2xl">
+        <div className="flex gap-1 rounded-2xl border border-black/10 bg-white/85 p-2 shadow-xl shadow-black/10 backdrop-blur-xl dark:border-white/10 dark:bg-[#0a0a0a]/95 dark:shadow-2xl">
           {navItems.map(({ id, icon: Icon, label }) => (
             <button
               key={id}
@@ -140,7 +142,9 @@ export function FloatingNav() {
               aria-current={current === id ? "true" : undefined}
               className={cn(
                 "flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-300",
-                current === id ? "bg-white/10 text-white" : "text-white/50 hover:text-white",
+                current === id
+                  ? "bg-black/10 text-[#1d1d1f] shadow-sm dark:bg-white/10 dark:text-white"
+                  : "text-[#515154] hover:text-[#1d1d1f] dark:text-white/50 dark:hover:text-white",
               )}
             >
               <Icon className="h-4 w-4" />

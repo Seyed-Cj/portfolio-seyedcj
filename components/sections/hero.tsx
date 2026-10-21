@@ -69,7 +69,7 @@ export function Hero() {
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          className="mb-6 text-3xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl"
+          className="mb-6 text-3xl font-bold tracking-tight text-[#1d1d1f] sm:text-6xl lg:text-7xl dark:text-white"
         >
           {t("name")}
         </motion.h1>
@@ -79,7 +79,7 @@ export function Hero() {
           initial="hidden"
           animate="visible"
           variants={fadeUp}
-          className="mb-10 max-w-xl text-lg leading-relaxed text-white/70 sm:text-xl"
+          className="mb-10 max-w-xl text-lg leading-relaxed text-[#515154] sm:text-xl dark:text-white/70"
         >
           {t("description")}
         </motion.p>
@@ -130,7 +130,7 @@ export function Hero() {
               key={label}
               href={href}
               aria-label={label}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/60 transition-all duration-300 hover:border-white/20 hover:bg-white/5 hover:text-white"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-black/10 text-[#1d1d1f]/60 transition-all duration-300 hover:border-black/20 hover:bg-black/5 hover:text-[#1d1d1f] dark:border-white/10 dark:text-white/60 dark:hover:border-white/20 dark:hover:bg-white/5 dark:hover:text-white"
             >
               <Icon className="h-5 w-5" />
             </a>
@@ -147,7 +147,7 @@ export function Hero() {
         <button
           type="button"
           onClick={next}
-          className="animate-subtle-bounce cursor-pointer text-white/20 transition-colors hover:text-white/40"
+          className="animate-subtle-bounce cursor-pointer text-black/30 transition-colors hover:text-black/60 dark:text-white/20 dark:hover:text-white/40"
           aria-label="Next section"
         >
           <ArrowDown className="h-5 w-5" />
