@@ -81,7 +81,7 @@ export function Skills() {
   const t = useTranslations("Skills");
 
   return (
-    <section className="relative flex h-full w-full items-start justify-center overflow-x-hidden overflow-y-auto px-4 pt-6 pb-20 sm:px-6 md:items-center md:overflow-hidden">
+    <section className="relative flex h-full w-full items-start justify-center overflow-x-hidden overflow-y-auto px-4 pt-14 pb-24 sm:px-6 sm:pt-16 sm:pb-20 md:items-center md:overflow-hidden md:pt-6">
       <Glow className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" size={500} />
 
       <div className="relative z-10 mx-auto max-w-4xl">

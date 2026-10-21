@@ -41,7 +41,7 @@ export function Experience() {
   const t = useTranslations("Experience");
 
   return (
-    <section className="relative flex h-full w-full items-start justify-center overflow-x-hidden overflow-y-auto px-4 pt-6 pb-20 sm:px-6 md:items-center md:overflow-hidden md:py-8">
+    <section className="relative flex h-full w-full items-start justify-center overflow-x-hidden overflow-y-auto px-4 pt-14 pb-24 sm:px-6 sm:pt-16 sm:pb-20 md:items-center md:overflow-hidden md:py-8">
       <Glow className="top-1/3 right-1/4" size={450} />
 
       <div className="relative z-10 mx-auto w-full max-w-4xl">
