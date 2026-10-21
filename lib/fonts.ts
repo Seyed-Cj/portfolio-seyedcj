@@ -25,4 +25,3 @@ export const fonts = {
 } as const;
 
 export type FontName = keyof typeof fonts;
-

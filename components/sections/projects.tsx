@@ -145,7 +145,7 @@ function ProjectCard({ project, index }: { project: ProjectItem; index: number }
         </div>
 
         {hasLinks && (
-          <div className="flex items-center gap-2 pt-3 border-t border-white/5 md:hidden">
+          <div className="flex items-center gap-2 border-t border-white/5 pt-3 md:hidden">
             {project.demoUrl && (
               <a
                 href={project.demoUrl}

@@ -48,8 +48,12 @@ export function Hero() {
   const locale = useLocale();
   const { next, goTo } = useSection();
 
-  const cvHref = locale === "en" ? "/Seyed-Amirmohammad-Mousavi-Resume-EN.pdf" : "/seyed-amirmohammad-mousavi.pdf";
-  const cvDownload = locale === "en" ? "Seyed-Amirmohammad-Mousavi-Resume-EN.pdf" : "seyed-amirmohammad-mousavi.pdf";
+  const cvHref =
+    locale === "en"
+      ? "/Seyed-Amirmohammad-Mousavi-Resume-EN.pdf"
+      : "/seyed-amirmohammad-mousavi.pdf";
+  const cvDownload =
+    locale === "en" ? "Seyed-Amirmohammad-Mousavi-Resume-EN.pdf" : "seyed-amirmohammad-mousavi.pdf";
 
   return (
     <section className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden px-4 sm:px-6">
@@ -143,7 +147,7 @@ export function Hero() {
         <button
           type="button"
           onClick={next}
-          className="animate-subtle-bounce text-white/20 transition-colors hover:text-white/40 cursor-pointer"
+          className="animate-subtle-bounce cursor-pointer text-white/20 transition-colors hover:text-white/40"
           aria-label="Next section"
         >
           <ArrowDown className="h-5 w-5" />

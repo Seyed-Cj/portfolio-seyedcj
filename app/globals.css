@@ -38,11 +38,16 @@ body {
 [dir="ltr"] {
   direction: ltr;
   text-align: left;
-  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-family:
+    var(--font-inter),
+    system-ui,
+    -apple-system,
+    sans-serif;
 }
 
 @keyframes subtle-bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {

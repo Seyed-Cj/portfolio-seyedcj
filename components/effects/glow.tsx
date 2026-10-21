@@ -45,8 +45,7 @@ export function Glow({ className = "", size = 300 }: GlowProps) {
       style={{
         width: size,
         height: size,
-        background:
-          "radial-gradient(ellipse at center, rgba(255,255,255,0.8) 0%, transparent 70%)",
+        background: "radial-gradient(ellipse at center, rgba(255,255,255,0.8) 0%, transparent 70%)",
       }}
       animate={{
         scale: [1, 1.1, 1],

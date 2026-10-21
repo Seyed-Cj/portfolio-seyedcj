@@ -60,7 +60,7 @@ export function LanguageSwitcher() {
   }, [handleKeyDown]);
 
   return (
-    <div ref={containerRef} className="fixed top-6 right-6 md:top-auto md:bottom-6 md:right-6 z-50">
+    <div ref={containerRef} className="fixed top-6 right-6 z-50 md:top-auto md:right-6 md:bottom-6">
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -68,7 +68,7 @@ export function LanguageSwitcher() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.15, ease }}
-            className="absolute top-full right-0 mt-2 md:top-auto md:bottom-full md:mt-0 md:mb-2 origin-top-right md:origin-bottom-right flex min-w-35 flex-col gap-1 rounded-2xl border border-white/10 bg-black/95 md:bg-black/80 p-1.5 shadow-2xl md:backdrop-blur-xl"
+            className="absolute top-full right-0 mt-2 flex min-w-35 origin-top-right flex-col gap-1 rounded-2xl border border-white/10 bg-black/95 p-1.5 shadow-2xl md:top-auto md:bottom-full md:mt-0 md:mb-2 md:origin-bottom-right md:bg-black/80 md:backdrop-blur-xl"
             role="menu"
             aria-orientation="vertical"
             aria-label={t("label")}
@@ -105,7 +105,7 @@ export function LanguageSwitcher() {
         aria-expanded={isOpen}
         aria-haspopup="true"
         aria-label={t("label")}
-        className="flex cursor-pointer items-center gap-2 rounded-full border border-white/10 bg-[#0a0a0a]/95 md:bg-white/5 px-3.5 py-2 text-xs font-medium text-white/80 md:backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:text-white focus-visible:ring-2 focus-visible:ring-white/20 focus-visible:outline-none"
+        className="flex cursor-pointer items-center gap-2 rounded-full border border-white/10 bg-[#0a0a0a]/95 px-3.5 py-2 text-xs font-medium text-white/80 transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:text-white focus-visible:ring-2 focus-visible:ring-white/20 focus-visible:outline-none md:bg-white/5 md:backdrop-blur-xl"
       >
         <Globe className="h-4 w-4 text-white/70" />
         <span className="uppercase">{currentLocale}</span>
