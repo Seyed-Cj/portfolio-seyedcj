@@ -4,7 +4,7 @@ import { useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Home, User, Briefcase, FolderKanban, Wrench, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useSection, SECTIONS } from "@/components/context/section-context";
+import { useSection } from "@/components/context/section-context";
 
 const navItems = [
   { id: 0, icon: Home, label: "Home" },
@@ -41,34 +41,51 @@ export function FloatingNav() {
 
   useEffect(() => {
     let touchStartY = 0;
+    let wasAtTop = false;
+    let wasAtBottom = false;
+
     const handleTouchStart = (e: TouchEvent) => {
       touchStartY = e.touches[0].clientY;
+      const section = document.querySelector<HTMLElement>("main section");
+      if (section) {
+        wasAtTop = section.scrollTop <= 2;
+        wasAtBottom =
+          Math.ceil(section.scrollTop + section.clientHeight) >= section.scrollHeight - 2;
+      }
     };
+
     const handleTouchEnd = (e: TouchEvent) => {
       const delta = touchStartY - e.changedTouches[0].clientY;
       if (Math.abs(delta) > 50) {
-        const section = document.querySelector("section");
+        const section = document.querySelector<HTMLElement>("main section");
         if (section) {
           const isScrollable = section.scrollHeight > section.clientHeight + 1;
           if (isScrollable) {
-            const atTop = section.scrollTop <= 0;
-            const atBottom = section.scrollTop + section.clientHeight >= section.scrollHeight - 1;
-            if (delta > 0 && !atBottom) return;
-            if (delta < 0 && !atTop) return;
+            const isCurrentlyAtTop = section.scrollTop <= 2;
+            const isCurrentlyAtBottom =
+              Math.ceil(section.scrollTop + section.clientHeight) >= section.scrollHeight - 2;
+
+            // Only transition to next section if gesture started at the bottom AND is still at the bottom
+            if (delta > 0 && (!wasAtBottom || !isCurrentlyAtBottom)) return;
+
+            // Only transition to prev section if gesture started at the top AND is still at the top
+            if (delta < 0 && (!wasAtTop || !isCurrentlyAtTop)) return;
           }
         }
         if (delta > 0) next();
         else prev();
       }
     };
+
     let wheelTimeout: ReturnType<typeof setTimeout>;
     const handleWheel = (e: WheelEvent) => {
-      const section = document.querySelector("section");
+      const section = document.querySelector<HTMLElement>("main section");
       if (section) {
         const isScrollable = section.scrollHeight > section.clientHeight + 1;
         if (isScrollable) {
-          const atTop = section.scrollTop <= 0;
-          const atBottom = section.scrollTop + section.clientHeight >= section.scrollHeight - 1;
+          const atTop = section.scrollTop <= 2;
+          const atBottom =
+            Math.ceil(section.scrollTop + section.clientHeight) >= section.scrollHeight - 2;
           if (e.deltaY > 0 && !atBottom) return;
           if (e.deltaY < 0 && !atTop) return;
         }
