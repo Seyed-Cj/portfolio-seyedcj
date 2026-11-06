@@ -49,11 +49,11 @@ export function Hero() {
   const { next, goTo } = useSection();
 
   const cvHref =
-    locale === "en"
-      ? "/Seyed-Amirmohammad-Mousavi-Resume-EN.pdf"
-      : "/seyed-amirmohammad-mousavi.pdf";
+    locale === "fa"
+      ? "/seyed-amirmohammad-mousavi.pdf"
+      : "/Seyed-Amirmohammad-Mousavi-Resume-EN.pdf";
   const cvDownload =
-    locale === "en" ? "Seyed-Amirmohammad-Mousavi-Resume-EN.pdf" : "seyed-amirmohammad-mousavi.pdf";
+    locale === "fa" ? "seyed-amirmohammad-mousavi.pdf" : "Seyed-Amirmohammad-Mousavi-Resume-EN.pdf";
 
   return (
     <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden px-4 sm:px-6">
