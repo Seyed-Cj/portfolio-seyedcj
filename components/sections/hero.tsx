@@ -80,11 +80,7 @@ export function Hero() {
           {t("description")}
         </motion.p>
 
-        <motion.div
-          custom={3}
-          variants={fadeUp}
-          className="flex flex-col gap-4 sm:flex-row"
-        >
+        <motion.div custom={3} variants={fadeUp} className="flex flex-col gap-4 sm:flex-row">
           <Button variant="secondary" size="lg" className="group" asChild>
             <a href={cvHref} download={cvDownload}>
               <svg
@@ -108,11 +104,7 @@ export function Hero() {
           </Button>
         </motion.div>
 
-        <motion.div
-          custom={4}
-          variants={fadeUp}
-          className="mt-12 flex gap-4"
-        >
+        <motion.div custom={4} variants={fadeUp} className="mt-12 flex gap-4">
           {[
             { icon: GithubIcon, href: CONTACT.github, label: "GitHub" },
             { icon: LinkedinIcon, href: CONTACT.linkedin, label: "LinkedIn" },

@@ -181,11 +181,7 @@ export function Projects() {
       <Glow className="bottom-0 left-0" size={500} />
 
       <div className="relative z-10 mx-auto max-w-6xl">
-        <motion.div
-          custom={0}
-          variants={fadeUp}
-          className="mb-12"
-        >
+        <motion.div custom={0} variants={fadeUp} className="mb-12">
           <p className="mb-4 text-sm font-medium tracking-[0.2em] text-[#86868b] uppercase dark:text-white/60">
             {t("label")}
           </p>

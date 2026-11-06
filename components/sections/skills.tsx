@@ -83,11 +83,7 @@ export function Skills() {
       <Glow className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" size={500} />
 
       <div className="relative z-10 mx-auto max-w-4xl">
-        <motion.div
-          custom={0}
-          variants={fadeUp}
-          className="mb-12"
-        >
+        <motion.div custom={0} variants={fadeUp} className="mb-12">
           <p className="mb-4 text-sm font-medium tracking-[0.2em] text-[#86868b] uppercase dark:text-white/60">
             {t("label")}
           </p>

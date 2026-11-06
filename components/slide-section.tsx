@@ -13,13 +13,7 @@ interface SlideSectionProps {
   children: React.ReactNode;
 }
 
-export function SlideSection({
-  id,
-  isActive,
-  isPast,
-  isFirstRender,
-  children,
-}: SlideSectionProps) {
+export function SlideSection({ id, isActive, isPast, isFirstRender, children }: SlideSectionProps) {
   const shouldReduceMotion = useReducedMotion();
 
   // If user prefers reduced motion, only fade opacity without y translation

@@ -45,11 +45,7 @@ export function Experience() {
       <Glow className="top-1/3 right-1/4" size={450} />
 
       <div className="relative z-10 mx-auto w-full max-w-4xl">
-        <motion.div
-          custom={0}
-          variants={fadeUp}
-          className="mb-8 sm:mb-12"
-        >
+        <motion.div custom={0} variants={fadeUp} className="mb-8 sm:mb-12">
           <p className="mb-4 text-sm font-medium tracking-[0.2em] text-[#86868b] uppercase dark:text-white/60">
             {t("label")}
           </p>
@@ -60,12 +56,7 @@ export function Experience() {
 
         <div className="relative ms-3 space-y-6 border-s border-black/10 ps-6 sm:ms-4 sm:space-y-8 sm:ps-8 dark:border-white/10">
           {experiences.map((exp, i) => (
-            <motion.div
-              key={exp.id}
-              custom={i + 1}
-              variants={fadeUp}
-              className="group relative"
-            >
+            <motion.div key={exp.id} custom={i + 1} variants={fadeUp} className="group relative">
               {/* Timeline marker point */}
               <div className="absolute -inset-s-7.75 top-1.5 flex h-4 w-4 items-center justify-center rounded-full border border-black/30 bg-[#f5f5f7] ring-4 ring-[#f5f5f7] transition-colors group-hover:border-black group-hover:bg-black/10 sm:-inset-s-9.75 dark:border-white/40 dark:bg-[#050505] dark:ring-[#050505] dark:group-hover:border-white dark:group-hover:bg-white/20">
                 <div className="h-1.5 w-1.5 rounded-full bg-[#1d1d1f] dark:bg-white/80" />

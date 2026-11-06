@@ -95,11 +95,7 @@ export function Contact() {
           </Button>
         </motion.div>
 
-        <motion.div
-          custom={2}
-          variants={fadeUp}
-          className="mt-12 flex justify-center gap-4"
-        >
+        <motion.div custom={2} variants={fadeUp} className="mt-12 flex justify-center gap-4">
           {socials.map(({ icon: Icon, href, label }) => (
             <a
               key={label}
