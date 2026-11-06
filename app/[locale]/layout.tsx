@@ -10,44 +10,14 @@ import "../globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://seyedcj.ir";
 
-const NAME_VARIANTS_FA = [
+const REALISTIC_NAME_VARIANTS = [
   "سید امیرمحمد موسوی",
   "سید امیر محمد موسوی",
   "سید امیرمحمد موسوی شبستری",
-  "سید امیر محمد موسوی شبستری",
-  "سیدامیرمحمد موسوی",
-  "سیدامیر محمد موسوی",
-  "سیدامیرمحمد موسوی شبستری",
-  "سیدامیر محمد موسوی شبستری",
-  "امیرمحمد موسوی",
-  "امیر محمد موسوی",
-  "امیرمحمد موسوی شبستری",
-  "امیر محمد موسوی شبستری",
-  "موسوی شبستری",
-  "سید موسوی",
-  "سیدسی‌جی",
-  "سید سی جی",
-];
-
-const NAME_VARIANTS_EN = [
   "Seyed Amirmohammad Mousavi",
   "Seyed Amir Mohammad Mousavi",
-  "Seyed Amirmohammad Mousavi Shabestari",
-  "Seyed Amir Mohammad Mousavi Shabestari",
-  "Seyed Amirmohammad Moosavi",
-  "Seyed Amir Mohammad Moosavi",
-  "Seyed Amirmohammad Moosavi Shabestari",
-  "Amirmohammad Mousavi",
-  "Amir Mohammad Mousavi",
-  "Amirmohammad Mousavi Shabestari",
-  "Mousavi Shabestari",
   "SeyedCj",
-  "Seyed-Cj",
-  "Seyed Cj",
-  "seyedcj.ir",
 ];
-
-const ALL_NAME_VARIANTS = [...NAME_VARIANTS_FA, ...NAME_VARIANTS_EN];
 
 export async function generateMetadata({
   params,
@@ -67,8 +37,7 @@ export async function generateMetadata({
 
   const keywords = isFa
     ? [
-        ...NAME_VARIANTS_FA,
-        ...NAME_VARIANTS_EN,
+        ...REALISTIC_NAME_VARIANTS,
         "مهندس نرم‌افزار",
         "برنامه‌نویس فول‌استک",
         "برنامه‌نویس فرانت‌اند",
@@ -104,8 +73,7 @@ export async function generateMetadata({
         "WebSockets",
       ]
     : [
-        ...NAME_VARIANTS_EN,
-        ...NAME_VARIANTS_FA,
+        ...REALISTIC_NAME_VARIANTS,
         "Software Engineer",
         "Full-Stack Web Developer",
         "Full-Stack Developer",
@@ -262,7 +230,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         givenName: isFa ? "امیرمحمد" : "Amirmohammad",
         additionalName: isFa ? "سید" : "Seyed",
         familyName: isFa ? "موسوی شبستری" : "Mousavi Shabestari",
-        alternateName: ALL_NAME_VARIANTS,
+        alternateName: REALISTIC_NAME_VARIANTS,
         jobTitle: isFa
           ? ["مهندس نرم‌افزار", "توسعه‌دهنده فول‌استک وب", "برنامه‌نویس بک‌اند و فرانت‌اند"]
           : ["Software Engineer", "Full-Stack Web Developer", "Backend & Frontend Engineer"],
@@ -367,38 +335,6 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body
         className={`${activeFont.className} h-full overflow-hidden bg-[#f5f5f7] text-[#1d1d1f] antialiased transition-colors duration-300 dark:bg-black dark:text-white`}
       >
-        {/* Semantic accessible SEO content for search crawlers & screen readers */}
-        <div className="sr-only" aria-hidden="false">
-          <header>
-            <h1>
-              {isFa
-                ? "سید امیرمحمد موسوی (شبستری) — برنامه‌نویس فول‌استک و مهندس نرم‌افزار | SeyedCj"
-                : "Seyed Amirmohammad Mousavi (Shabestari) — Full-Stack Developer & Software Engineer | SeyedCj"}
-            </h1>
-            <p>
-              {isFa
-                ? "سید امیرمحمد موسوی (که به شکل‌های سید امیر محمد موسوی، سید امیرمحمد موسوی شبستری، سید امیر محمد موسوی شبستری، سیدامیرمحمد موسوی، امیرمحمد موسوی و SeyedCj نیز شناخته می‌شود) برنامه‌نویس فول‌استک وب و توسعه‌دهنده نرم‌افزار است."
-                : "Seyed Amirmohammad Mousavi (also known as Seyed Amir Mohammad Mousavi, Seyed Amirmohammad Mousavi Shabestari, Seyed Amir Mohammad Mousavi Shabestari, and SeyedCj) is a Full-Stack Web Developer and Software Engineer."}
-            </p>
-          </header>
-          <section>
-            <h2>{isFa ? "نام‌های مستعار و نگارش‌های مختلف نام" : "Alternative Name Spellings"}</h2>
-            <ul>
-              {ALL_NAME_VARIANTS.map((variant) => (
-                <li key={variant}>{variant}</li>
-              ))}
-            </ul>
-          </section>
-          <section>
-            <h2>{isFa ? "تخصص‌ها و حوزه‌های فعالیت" : "Technical Expertise"}</h2>
-            <p>
-              {isFa
-                ? "متخصص در ساخت وب‌اپلیکیشن‌های پیشرفته با Next.js، React، تایپ‌اسکریپت و طراحی سیستم‌های مقیاس‌پذیر بک‌اند با NestJS، Node.js، PostgreSQL، MongoDB، داکر و ردیس."
-                : "Specialized in advanced web application development with Next.js, React, TypeScript, and architecting scalable backends with NestJS, Node.js, PostgreSQL, MongoDB, Docker, and Redis."}
-            </p>
-          </section>
-        </div>
-
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
             {children}
