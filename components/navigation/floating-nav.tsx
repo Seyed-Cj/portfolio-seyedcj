@@ -4,15 +4,15 @@ import { useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Home, User, Briefcase, FolderKanban, Wrench, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useSection } from "@/components/context/section-context";
+import { useSection, SECTIONS } from "@/components/context/section-context";
 
 const navItems = [
-  { id: 0, icon: Home, label: "Home" },
-  { id: 1, icon: User, label: "About" },
-  { id: 2, icon: Briefcase, label: "Experience" },
-  { id: 3, icon: FolderKanban, label: "Projects" },
-  { id: 4, icon: Wrench, label: "Skills" },
-  { id: 5, icon: Mail, label: "Contact" },
+  { id: 0, sectionId: "hero", icon: Home, label: "Home" },
+  { id: 1, sectionId: "about", icon: User, label: "About" },
+  { id: 2, sectionId: "experience", icon: Briefcase, label: "Experience" },
+  { id: 3, sectionId: "projects", icon: FolderKanban, label: "Projects" },
+  { id: 4, sectionId: "skills", icon: Wrench, label: "Skills" },
+  { id: 5, sectionId: "contact", icon: Mail, label: "Contact" },
 ] as const;
 
 export function FloatingNav() {
@@ -46,7 +46,7 @@ export function FloatingNav() {
 
     const handleTouchStart = (e: TouchEvent) => {
       touchStartY = e.touches[0].clientY;
-      const section = document.querySelector<HTMLElement>("main section");
+      const section = document.getElementById(SECTIONS[current]);
       if (section) {
         wasAtTop = section.scrollTop <= 2;
         wasAtBottom =
@@ -57,7 +57,7 @@ export function FloatingNav() {
     const handleTouchEnd = (e: TouchEvent) => {
       const delta = touchStartY - e.changedTouches[0].clientY;
       if (Math.abs(delta) > 50) {
-        const section = document.querySelector<HTMLElement>("main section");
+        const section = document.getElementById(SECTIONS[current]);
         if (section) {
           const isScrollable = section.scrollHeight > section.clientHeight + 1;
           if (isScrollable) {
@@ -79,7 +79,7 @@ export function FloatingNav() {
 
     let wheelTimeout: ReturnType<typeof setTimeout>;
     const handleWheel = (e: WheelEvent) => {
-      const section = document.querySelector<HTMLElement>("main section");
+      const section = document.getElementById(SECTIONS[current]);
       if (section) {
         const isScrollable = section.scrollHeight > section.clientHeight + 1;
         if (isScrollable) {
@@ -107,7 +107,7 @@ export function FloatingNav() {
       window.removeEventListener("wheel", handleWheel);
       clearTimeout(wheelTimeout);
     };
-  }, [next, prev]);
+  }, [next, prev, current]);
 
   return (
     <>
@@ -120,10 +120,15 @@ export function FloatingNav() {
         aria-label="Section navigation"
       >
         <div className="flex flex-col gap-1 rounded-2xl border border-black/10 bg-white/80 p-2 shadow-xl shadow-black/5 backdrop-blur-xl dark:border-white/10 dark:bg-white/5 dark:shadow-2xl">
-          {navItems.map(({ id, icon: Icon, label }) => (
-            <button
+          {navItems.map(({ id, sectionId, icon: Icon, label }) => (
+            <a
               key={id}
-              onClick={() => goTo(id)}
+              href={`#${sectionId}`}
+              onClick={(e) => {
+                e.preventDefault();
+                goTo(id);
+                window.history.replaceState(null, "", `#${sectionId}`);
+              }}
               aria-label={label}
               aria-current={current === id ? "true" : undefined}
               className={cn(
@@ -137,7 +142,7 @@ export function FloatingNav() {
               <span className="pointer-events-none absolute right-full mr-3 rounded-lg bg-[#1d1d1f] px-3 py-1.5 text-xs font-medium whitespace-nowrap text-white opacity-0 shadow-md backdrop-blur-sm transition-all duration-200 group-hover:opacity-100 dark:bg-white/10 dark:text-white">
                 {label}
               </span>
-            </button>
+            </a>
           ))}
         </div>
       </motion.nav>
@@ -151,10 +156,15 @@ export function FloatingNav() {
         aria-label="Section navigation"
       >
         <div className="flex gap-1 rounded-2xl border border-black/10 bg-white/85 p-2 shadow-xl shadow-black/10 backdrop-blur-xl dark:border-white/10 dark:bg-[#0a0a0a]/95 dark:shadow-2xl">
-          {navItems.map(({ id, icon: Icon, label }) => (
-            <button
+          {navItems.map(({ id, sectionId, icon: Icon, label }) => (
+            <a
               key={id}
-              onClick={() => goTo(id)}
+              href={`#${sectionId}`}
+              onClick={(e) => {
+                e.preventDefault();
+                goTo(id);
+                window.history.replaceState(null, "", `#${sectionId}`);
+              }}
               aria-label={label}
               aria-current={current === id ? "true" : undefined}
               className={cn(
@@ -165,7 +175,7 @@ export function FloatingNav() {
               )}
             >
               <Icon className="h-4 w-4" />
-            </button>
+            </a>
           ))}
         </div>
       </motion.nav>
