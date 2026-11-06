@@ -1,9 +1,15 @@
 import localFont from "next/font/local";
-import { Inter } from "next/font/google";
+import { Inter, Noto_Sans_Arabic } from "next/font/google";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const notoArabic = Noto_Sans_Arabic({
+  subsets: ["arabic"],
+  variable: "--font-noto-arabic",
   display: "swap",
 });
 
@@ -22,6 +28,7 @@ const pelak = localFont({
 export const fonts = {
   inter,
   pelak,
+  notoArabic,
 } as const;
 
 export type FontName = keyof typeof fonts;
