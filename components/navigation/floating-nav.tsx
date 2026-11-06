@@ -44,9 +44,15 @@ export function FloatingNav() {
     let wasAtTop = false;
     let wasAtBottom = false;
 
+    const getScrollEl = () => {
+      const section = document.getElementById(SECTIONS[current]);
+      if (!section) return null;
+      return section.querySelector<HTMLElement>(".overflow-y-auto") || section;
+    };
+
     const handleTouchStart = (e: TouchEvent) => {
       touchStartY = e.touches[0].clientY;
-      const section = document.getElementById(SECTIONS[current]);
+      const section = getScrollEl();
       if (section) {
         wasAtTop = section.scrollTop <= 2;
         wasAtBottom =
@@ -57,7 +63,7 @@ export function FloatingNav() {
     const handleTouchEnd = (e: TouchEvent) => {
       const delta = touchStartY - e.changedTouches[0].clientY;
       if (Math.abs(delta) > 50) {
-        const section = document.getElementById(SECTIONS[current]);
+        const section = getScrollEl();
         if (section) {
           const isScrollable = section.scrollHeight > section.clientHeight + 1;
           if (isScrollable) {
@@ -79,7 +85,7 @@ export function FloatingNav() {
 
     let wheelTimeout: ReturnType<typeof setTimeout>;
     const handleWheel = (e: WheelEvent) => {
-      const section = document.getElementById(SECTIONS[current]);
+      const section = getScrollEl();
       if (section) {
         const isScrollable = section.scrollHeight > section.clientHeight + 1;
         if (isScrollable) {

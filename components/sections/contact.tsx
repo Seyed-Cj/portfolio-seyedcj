@@ -59,11 +59,11 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="relative flex h-full w-full items-center justify-center overflow-hidden px-4 sm:px-6">
+    <div className="relative flex h-full w-full items-center justify-center overflow-hidden px-4 sm:px-6">
       <Glow className="right-0 bottom-0" size={400} />
 
       <div className="relative z-10 mx-auto max-w-2xl text-center">
-        <motion.div custom={0} initial="hidden" animate="visible" variants={fadeUp}>
+        <motion.div custom={0} variants={fadeUp}>
           <p className="mb-4 text-sm font-medium tracking-[0.2em] text-[#86868b] uppercase dark:text-white/60">
             {t("label")}
           </p>
@@ -77,8 +77,6 @@ export function Contact() {
 
         <motion.div
           custom={1}
-          initial="hidden"
-          animate="visible"
           variants={fadeUp}
           className="flex flex-wrap items-center justify-center gap-4"
         >
@@ -99,8 +97,6 @@ export function Contact() {
 
         <motion.div
           custom={2}
-          initial="hidden"
-          animate="visible"
           variants={fadeUp}
           className="mt-12 flex justify-center gap-4"
         >
@@ -118,6 +114,6 @@ export function Contact() {
           ))}
         </motion.div>
       </div>
-    </section>
+    </div>
   );
 }

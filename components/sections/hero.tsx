@@ -56,18 +56,16 @@ export function Hero() {
     locale === "en" ? "Seyed-Amirmohammad-Mousavi-Resume-EN.pdf" : "seyed-amirmohammad-mousavi.pdf";
 
   return (
-    <section id="hero" className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden px-4 sm:px-6">
+    <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden px-4 sm:px-6">
       <Glow className="top-1/4 left-1/2 -translate-x-1/2" size={600} />
 
       <div className="relative z-10 flex max-w-3xl flex-col items-center text-center">
-        <motion.div custom={0} initial="hidden" animate="visible" variants={fadeUp}>
+        <motion.div custom={0} variants={fadeUp}>
           <Badge className="mb-8">{t("role")}</Badge>
         </motion.div>
 
         <motion.h1
           custom={1}
-          initial="hidden"
-          animate="visible"
           variants={fadeUp}
           className="mb-6 text-3xl font-bold tracking-tight text-[#1d1d1f] sm:text-6xl lg:text-7xl dark:text-white"
         >
@@ -76,8 +74,6 @@ export function Hero() {
 
         <motion.p
           custom={2}
-          initial="hidden"
-          animate="visible"
           variants={fadeUp}
           className="mb-10 max-w-xl text-lg leading-relaxed text-[#515154] sm:text-xl dark:text-white/70"
         >
@@ -86,8 +82,6 @@ export function Hero() {
 
         <motion.div
           custom={3}
-          initial="hidden"
-          animate="visible"
           variants={fadeUp}
           className="flex flex-col gap-4 sm:flex-row"
         >
@@ -116,8 +110,6 @@ export function Hero() {
 
         <motion.div
           custom={4}
-          initial="hidden"
-          animate="visible"
           variants={fadeUp}
           className="mt-12 flex gap-4"
         >
@@ -139,9 +131,10 @@ export function Hero() {
       </div>
 
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1, transition: { delay: 1.2, duration: 0.8 } },
+        }}
         className="absolute bottom-22 left-1/2 -translate-x-1/2 md:bottom-8"
       >
         <button
@@ -153,6 +146,6 @@ export function Hero() {
           <ArrowDown className="h-5 w-5" />
         </button>
       </motion.div>
-    </section>
+    </div>
   );
 }

@@ -19,11 +19,11 @@ export function About() {
   const t = useTranslations("About");
 
   return (
-    <section id="about" className="relative flex h-full w-full items-start justify-center overflow-x-hidden overflow-y-auto px-4 pt-14 pb-24 sm:px-6 sm:pt-16 sm:pb-20 md:items-center md:overflow-hidden md:pt-6">
+    <div className="relative flex h-full w-full items-start justify-center overflow-x-hidden overflow-y-auto px-4 pt-14 pb-24 sm:px-6 sm:pt-16 sm:pb-20 md:items-center md:overflow-hidden md:pt-6">
       <Glow className="top-0 right-0" size={400} />
 
       <div className="relative z-10 mx-auto max-w-4xl">
-        <motion.div custom={0} initial="hidden" animate="visible" variants={fadeUp}>
+        <motion.div custom={0} variants={fadeUp}>
           <p className="mb-4 text-sm font-medium tracking-[0.2em] text-[#86868b] uppercase dark:text-white/60">
             {t("label")}
           </p>
@@ -33,12 +33,12 @@ export function About() {
         </motion.div>
 
         <div className="grid sm:gap-16 md:grid-cols-2">
-          <motion.div custom={1} initial="hidden" animate="visible" variants={fadeUp}>
+          <motion.div custom={1} variants={fadeUp}>
             <p className="text-lg leading-relaxed text-[#515154] dark:text-white/70">
               {t("description1")}
             </p>
           </motion.div>
-          <motion.div custom={2} initial="hidden" animate="visible" variants={fadeUp}>
+          <motion.div custom={2} variants={fadeUp}>
             <p className="text-lg leading-relaxed text-[#515154] dark:text-white/70">
               {t("description2")}
             </p>
@@ -47,8 +47,6 @@ export function About() {
 
         <motion.div
           custom={3}
-          initial="hidden"
-          animate="visible"
           variants={fadeUp}
           className="grid grid-cols-3 gap-8 pt-8 sm:mt-16 sm:border-t sm:border-black/10 sm:pt-16 dark:sm:border-white/10"
         >
@@ -66,6 +64,6 @@ export function About() {
           ))}
         </motion.div>
       </div>
-    </section>
+    </div>
   );
 }

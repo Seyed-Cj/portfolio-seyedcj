@@ -1,15 +1,16 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { SectionProvider, useSection } from "@/components/context/section-context";
 import { Background } from "@/components/effects/background";
 import { FloatingNav } from "@/components/navigation/floating-nav";
+import { SlideSection } from "@/components/slide-section";
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
 import { Experience } from "@/components/sections/experience";
 import { Projects } from "@/components/sections/projects";
 import { Skills } from "@/components/sections/skills";
 import { Contact } from "@/components/sections/contact";
-import { cn } from "@/lib/utils";
 
 const sectionList = [
   { id: "hero", Component: Hero },
@@ -22,6 +23,12 @@ const sectionList = [
 
 function Sections() {
   const { current } = useSection();
+  const [isFirstRender, setIsFirstRender] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsFirstRender(false), 150);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <main className="relative h-screen w-full overflow-hidden">
@@ -29,26 +36,21 @@ function Sections() {
         const isActive = current === index;
         const isPast = index < current;
         return (
-          <div
+          <SlideSection
             key={id}
-            className={cn(
-              "absolute inset-0 transition-all duration-500 ease-[cubic-bezier(0.25,0.4,0.25,1)]",
-              isActive
-                ? "pointer-events-auto z-10 translate-y-0 opacity-100"
-                : "pointer-events-none -z-10 opacity-0",
-              !isActive && (isPast ? "-translate-y-5" : "translate-y-5"),
-            )}
-            aria-hidden={!isActive}
-            inert={!isActive ? true : undefined}
+            id={id}
+            isActive={isActive}
+            isPast={isPast}
+            isFirstRender={isFirstRender}
           >
             <Component />
-          </div>
+          </SlideSection>
         );
       })}
       <noscript>
         <style>{`
           main { height: auto !important; overflow: visible !important; }
-          main > div { position: relative !important; opacity: 1 !important; transform: none !important; pointer-events: auto !important; min-height: 100vh; }
+          main > section { position: relative !important; opacity: 1 !important; transform: none !important; pointer-events: auto !important; visibility: visible !important; min-height: 100vh; }
           html, body { overflow: auto !important; height: auto !important; }
         `}</style>
       </noscript>

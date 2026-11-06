@@ -41,14 +41,12 @@ export function Experience() {
   const t = useTranslations("Experience");
 
   return (
-    <section id="experience" className="relative flex h-full w-full items-start justify-center overflow-x-hidden overflow-y-auto px-4 pt-14 pb-24 sm:px-6 sm:pt-16 sm:pb-20 md:items-center md:overflow-hidden md:py-8">
+    <div className="relative flex h-full w-full items-start justify-center overflow-x-hidden overflow-y-auto px-4 pt-14 pb-24 sm:px-6 sm:pt-16 sm:pb-20 md:items-center md:overflow-hidden md:py-8">
       <Glow className="top-1/3 right-1/4" size={450} />
 
       <div className="relative z-10 mx-auto w-full max-w-4xl">
         <motion.div
           custom={0}
-          initial="hidden"
-          animate="visible"
           variants={fadeUp}
           className="mb-8 sm:mb-12"
         >
@@ -65,8 +63,6 @@ export function Experience() {
             <motion.div
               key={exp.id}
               custom={i + 1}
-              initial="hidden"
-              animate="visible"
               variants={fadeUp}
               className="group relative"
             >
@@ -110,6 +106,6 @@ export function Experience() {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

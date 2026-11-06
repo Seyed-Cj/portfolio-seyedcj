@@ -60,8 +60,6 @@ function ProjectCard({ project, index }: { project: ProjectItem; index: number }
   return (
     <motion.div
       custom={index}
-      initial="hidden"
-      animate="visible"
       variants={fadeUp}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -80,7 +78,7 @@ function ProjectCard({ project, index }: { project: ProjectItem; index: number }
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover"
-              loading="lazy"
+              loading="eager"
               onError={() => setImageError(true)}
             />
           </motion.div>
@@ -179,14 +177,12 @@ export function Projects() {
   const t = useTranslations("Projects");
 
   return (
-    <section id="projects" className="relative flex h-full w-full items-start justify-center overflow-x-hidden overflow-y-auto px-4 pt-14 pb-24 sm:px-6 sm:pt-16 sm:pb-20 md:items-center md:overflow-hidden md:py-8">
+    <div className="relative flex h-full w-full items-start justify-center overflow-x-hidden overflow-y-auto px-4 pt-14 pb-24 sm:px-6 sm:pt-16 sm:pb-20 md:items-center md:overflow-hidden md:py-8">
       <Glow className="bottom-0 left-0" size={500} />
 
       <div className="relative z-10 mx-auto max-w-6xl">
         <motion.div
           custom={0}
-          initial="hidden"
-          animate="visible"
           variants={fadeUp}
           className="mb-12"
         >
@@ -204,6 +200,6 @@ export function Projects() {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

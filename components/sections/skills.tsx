@@ -55,8 +55,6 @@ function SkillGroup({ group, index }: { group: (typeof skillGroups)[number]; ind
   return (
     <motion.div
       custom={index}
-      initial="hidden"
-      animate="visible"
       variants={fadeUp}
       className="rounded-2xl border border-black/10 bg-white/80 p-8 shadow-md shadow-black/5 dark:border-white/5 dark:bg-white/2 dark:shadow-none"
     >
@@ -81,14 +79,12 @@ export function Skills() {
   const t = useTranslations("Skills");
 
   return (
-    <section id="skills" className="relative flex h-full w-full items-start justify-center overflow-x-hidden overflow-y-auto px-4 pt-14 pb-24 sm:px-6 sm:pt-16 sm:pb-20 md:items-center md:overflow-hidden md:pt-6">
+    <div className="relative flex h-full w-full items-start justify-center overflow-x-hidden overflow-y-auto px-4 pt-14 pb-24 sm:px-6 sm:pt-16 sm:pb-20 md:items-center md:overflow-hidden md:pt-6">
       <Glow className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" size={500} />
 
       <div className="relative z-10 mx-auto max-w-4xl">
         <motion.div
           custom={0}
-          initial="hidden"
-          animate="visible"
           variants={fadeUp}
           className="mb-12"
         >
@@ -106,6 +102,6 @@ export function Skills() {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
