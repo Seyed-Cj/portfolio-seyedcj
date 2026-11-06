@@ -3,35 +3,19 @@ import { routing } from "@/i18n/routing";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://seyedcj.ir";
+  const lastModified = new Date("2026-11-06");
 
-  const localePages: MetadataRoute.Sitemap = routing.locales.map((locale) => ({
+  return routing.locales.map((locale) => ({
     url: `${siteUrl}/${locale}`,
-    lastModified: new Date(),
+    lastModified,
     changeFrequency: "weekly" as const,
-    priority: locale === "fa" ? 1.0 : 0.9,
+    priority: locale === "fa" ? 1.0 : 0.8,
     alternates: {
       languages: {
-        en: `${siteUrl}/en`,
         fa: `${siteUrl}/fa`,
-        "x-default": `${siteUrl}/${routing.defaultLocale}`,
+        en: `${siteUrl}/en`,
+        "x-default": `${siteUrl}/fa`,
       },
     },
   }));
-
-  return [
-    {
-      url: `${siteUrl}/`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 1.0,
-      alternates: {
-        languages: {
-          en: `${siteUrl}/en`,
-          fa: `${siteUrl}/fa`,
-          "x-default": `${siteUrl}/${routing.defaultLocale}`,
-        },
-      },
-    },
-    ...localePages,
-  ];
 }

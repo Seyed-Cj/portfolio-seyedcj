@@ -119,11 +119,11 @@ export async function generateMetadata({
     alternates: {
       canonical: `/${locale}`,
       languages: {
-        en: "/en",
         fa: "/fa",
+        en: "/en",
         "fa-IR": "/fa",
         "en-US": "/en",
-        "x-default": "/en",
+        "x-default": "/fa",
       },
     },
     robots: {
