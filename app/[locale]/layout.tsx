@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { fonts } from "@/lib/fonts";
@@ -28,12 +28,12 @@ export async function generateMetadata({
   const isFa = locale === "fa";
 
   const title = isFa
-    ? "سید امیرمحمد موسوی (شبستری) — مهندس نرم‌افزار و توسعه‌دهنده فول‌استک | SeyedCj"
-    : "Seyed Amirmohammad Mousavi (Shabestari) — Software Engineer & Full-Stack Developer | SeyedCj";
+    ? "سید امیرمحمد موسوی | مهندس نرم‌افزار و برنامه‌نویس فول‌استک"
+    : "Seyed Amirmohammad Mousavi | Full-Stack Software Engineer";
 
   const description = isFa
-    ? "وب‌سایت رسمی و پورتفولیو سید امیرمحمد موسوی (سید امیر محمد موسوی شبستری - SeyedCj). مهندس نرم‌افزار و برنامه‌نویس فول‌استک وب، متخصص در توسعه بک‌اند با NestJS و فرانت‌اند مدرن با Next.js، React، TypeScript و معماری سیستم‌های مقیاس‌پذیر."
-    : "Official portfolio of Seyed Amirmohammad Mousavi (Seyed Amir Mohammad Mousavi Shabestari — SeyedCj). Full-Stack Web Developer and Software Engineer specializing in NestJS backend development, modern Next.js/React interfaces, and scalable architectures.";
+    ? "پورتفولیو سید امیرمحمد موسوی (SeyedCj)؛ مهندس نرم‌افزار و توسعه‌دهنده فول‌استک وب متخصص در Next.js، NestJS و معماری مقیاس‌پذیر. مشاهده پروژه‌ها و سوابق کاری."
+    : "Official portfolio of Seyed Amirmohammad Mousavi (SeyedCj). Full-Stack Web Developer & Software Engineer specializing in Next.js, NestJS, and scalable systems.";
 
   const keywords = isFa
     ? [
@@ -44,19 +44,13 @@ export async function generateMetadata({
         "برنامه‌نویس بک‌اند",
         "توسعه‌دهنده وب",
         "توسعه‌دهنده فول‌استک وب",
-        "طراحی سایت",
         "برنامه‌نویس NestJS",
         "برنامه‌نویس Next.js",
         "برنامه‌نویس React",
         "برنامه‌نویس Node.js",
         "برنامه‌نویس TypeScript",
-        "برنامه‌نویس جاوااسکریپت",
-        "متخصص ری‌اکت",
-        "متخصص نکست جی‌اس",
         "پورتفولیو سید امیرمحمد موسوی",
         "رزومه سید امیرمحمد موسوی",
-        "رزومه کاری برنامه نویس",
-        "پروژه‌های برنامه نویسی",
         "Full-Stack Developer",
         "Software Engineer",
         "NestJS",
@@ -100,7 +94,7 @@ export async function generateMetadata({
   return {
     title: {
       default: title,
-      template: isFa ? "%s | سید امیرمحمد موسوی (شبستری)" : "%s | Seyed Amirmohammad Mousavi",
+      template: isFa ? "%s | سید امیرمحمد موسوی" : "%s | Seyed Amirmohammad Mousavi",
     },
     description,
     keywords,
@@ -144,20 +138,13 @@ export async function generateMetadata({
       description,
       url: `/${locale}`,
       siteName: isFa
-        ? "رزومه و پورتفولیو سید امیرمحمد موسوی (شبستری) | SeyedCj"
+        ? "پورتفولیو سید امیرمحمد موسوی | SeyedCj"
         : "Seyed Amirmohammad Mousavi Portfolio | SeyedCj",
       images: [
         {
-          url: "/SeyedCj.png",
-          width: 1200,
-          height: 630,
-          alt: title,
-          type: "image/png",
-        },
-        {
           url: "/portfolio.png",
-          width: 1200,
-          height: 630,
+          width: 1919,
+          height: 1079,
           alt: isFa ? "پورتفولیو سید امیرمحمد موسوی" : "Seyed Amirmohammad Mousavi Portfolio",
           type: "image/png",
         },
@@ -176,7 +163,7 @@ export async function generateMetadata({
       description,
       creator: "@SeyedCj",
       site: "@SeyedCj",
-      images: ["/SeyedCj.png"],
+      images: ["/portfolio.png"],
     },
     icons: {
       icon: [{ url: "/favicon.ico", sizes: "any" }],
@@ -215,6 +202,8 @@ export default async function LocaleLayout({ children, params }: Props) {
     notFound();
   }
 
+  setRequestLocale(locale);
+
   const messages = await getMessages();
   const dir = locale === "fa" ? "rtl" : "ltr";
   const activeFont = locale === "fa" ? fonts.pelak : fonts.inter;
@@ -232,18 +221,17 @@ export default async function LocaleLayout({ children, params }: Props) {
         familyName: isFa ? "موسوی شبستری" : "Mousavi Shabestari",
         alternateName: REALISTIC_NAME_VARIANTS,
         jobTitle: isFa
-          ? ["مهندس نرم‌افزار", "توسعه‌دهنده فول‌استک وب", "برنامه‌نویس بک‌اند و فرانت‌اند"]
-          : ["Software Engineer", "Full-Stack Web Developer", "Backend & Frontend Engineer"],
+          ? ["مهندس نرم‌افزار", "توسعه‌دهنده فول‌استک وب"]
+          : ["Software Engineer", "Full-Stack Web Developer"],
         description: isFa
-          ? "سید امیرمحمد موسوی (شبستری) ملقب به SeyedCj؛ مهندس نرم‌افزار و توسعه‌دهنده فول‌استک وب، متخصص در NestJS، Next.js، TypeScript و React با تمرکز بر معماری کلین و مقیاس‌پذیری."
-          : "Seyed Amirmohammad Mousavi (Shabestari), known as SeyedCj; Software Engineer and Full-Stack Web Developer specializing in NestJS, Next.js, TypeScript, and React with focus on clean architecture and scalability.",
+          ? "سید امیرمحمد موسوی (شبستری - SeyedCj)؛ مهندس نرم‌افزار و توسعه‌دهنده فول‌استک وب، متخصص در NestJS، Next.js، TypeScript و معماری سیستم‌های مقیاس‌پذیر."
+          : "Seyed Amirmohammad Mousavi (SeyedCj); Software Engineer and Full-Stack Web Developer specializing in NestJS, Next.js, TypeScript, and scalable architectures.",
         url: `${siteUrl}/${locale}`,
         image: `${siteUrl}/SeyedCj.png`,
         sameAs: [
           "https://github.com/Seyed-Cj",
           "https://www.linkedin.com/in/seyed-amirmohammad-moosavi-a66baa350",
           "https://t.me/seyedcj_sc",
-          "https://seyedcj.ir",
         ],
         knowsAbout: [
           "JavaScript",
@@ -276,9 +264,9 @@ export default async function LocaleLayout({ children, params }: Props) {
         "@id": `${siteUrl}/#website`,
         url: siteUrl,
         name: isFa
-          ? "وب‌سایت شخصی و پورتفولیو سید امیرمحمد موسوی (شبستری)"
-          : "Seyed Amirmohammad Mousavi Official Portfolio Website",
-        alternateName: ["سید امیرمحمد موسوی", "SeyedCj", "seyedcj.ir"],
+          ? "وب‌سایت و پورتفولیو سید امیرمحمد موسوی"
+          : "Seyed Amirmohammad Mousavi Official Portfolio",
+        alternateName: ["SeyedCj", "seyedcj.ir"],
         publisher: {
           "@id": `${siteUrl}/#person`,
         },
@@ -289,7 +277,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         "@id": `${siteUrl}/${locale}#profilepage`,
         url: `${siteUrl}/${locale}`,
         name: isFa
-          ? "پورتفولیو و رزومه سید امیرمحمد موسوی (شبستری)"
+          ? "پورتفولیو و رزومه سید امیرمحمد موسوی"
           : "Seyed Amirmohammad Mousavi Portfolio & Resume",
         isPartOf: {
           "@id": `${siteUrl}/#website`,
@@ -301,6 +289,53 @@ export default async function LocaleLayout({ children, params }: Props) {
           "@id": `${siteUrl}/#person`,
         },
         inLanguage: isFa ? "fa-IR" : "en-US",
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${siteUrl}/#projects`,
+        name: isFa ? "پروژه‌های منتخب" : "Featured Projects",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            item: {
+              "@type": "SoftwareSourceCode",
+              name: isFa ? "پلتفرم فروشگاهی اپل" : "Apple Store E-Commerce Platform",
+              description: isFa
+                ? "پلتفرم فروشگاهی مدرن برای عرضه محصولات با سبد خرید آنی و فیلتر پیشرفته."
+                : "Modern e-commerce storefront featuring instant cart updates and dynamic filtering.",
+              programmingLanguage: ["TypeScript", "Next.js", "Tailwind CSS"],
+              codeRepository: "https://github.com/Seyed-Cj/nextjs-mobile-store",
+              author: { "@id": `${siteUrl}/#person` },
+            },
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            item: {
+              "@type": "SoftwareSourceCode",
+              name: isFa ? "بک‌اند تاکسی آنلاین" : "Online Taxi Backend Architecture",
+              description: isFa
+                ? "معماری ماژولار بک‌اند بر پایه Monorepo با دیسپچ آنی WebSocket و صف پیام RabbitMQ."
+                : "Scalable monorepo backend architecture with real-time WebSocket dispatch and RabbitMQ message queues.",
+              programmingLanguage: ["TypeScript", "NestJS", "PostgreSQL", "Redis", "Docker"],
+              codeRepository: "https://github.com/Seyed-Cj/onlinetaxi-backend",
+              author: { "@id": `${siteUrl}/#person` },
+            },
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            item: {
+              "@type": "CreativeWork",
+              name: isFa ? "سایت فروشگاهی فول‌استک" : "Full-Stack Gaming Accounts E-Commerce",
+              description: isFa
+                ? "پلتفرم جامع فول‌استک برای خرید و فروش امن با احراز هویت پیشرفته و مدیریت خودکار سفارش."
+                : "End-to-end full-stack digital marketplace with secure authentication and automated workflows.",
+              author: { "@id": `${siteUrl}/#person` },
+            },
+          },
+        ],
       },
     ],
   };
