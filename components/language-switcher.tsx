@@ -10,6 +10,12 @@ import { cn } from "@/lib/utils";
 
 const ease = [0.25, 0.4, 0.25, 1] as const;
 
+const nativeLabels: Record<string, string> = {
+  fa: "فارسی",
+  en: "English",
+  ar: "العربية",
+};
+
 export function LanguageSwitcher() {
   const t = useTranslations("LanguageToggle");
   const currentLocale = useLocale();
@@ -23,7 +29,8 @@ export function LanguageSwitcher() {
 
   const handleSelectLocale = (targetLocale: string) => {
     if (targetLocale !== currentLocale) {
-      router.replace(pathname, { locale: targetLocale });
+      const hash = typeof window !== "undefined" ? window.location.hash : "";
+      router.replace(hash ? `${pathname}${hash}` : pathname, { locale: targetLocale });
     }
     setIsOpen(false);
   };
@@ -75,10 +82,17 @@ export function LanguageSwitcher() {
           >
             {routing.locales.map((loc) => {
               const isActive = loc === currentLocale;
+              const href = `/${loc}`;
               return (
-                <button
+                <a
                   key={loc}
-                  onClick={() => handleSelectLocale(loc)}
+                  href={href}
+                  hrefLang={loc}
+                  lang={loc}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleSelectLocale(loc);
+                  }}
                   role="menuitem"
                   aria-current={isActive ? "true" : undefined}
                   className={cn(
@@ -88,9 +102,9 @@ export function LanguageSwitcher() {
                       : "text-[#515154] hover:bg-black/5 hover:text-[#1d1d1f] dark:text-white/60 dark:hover:bg-white/10 dark:hover:text-white",
                   )}
                 >
-                  <span>{t(loc)}</span>
+                  <span>{nativeLabels[loc] || t(loc as never)}</span>
                   {isActive && <Check className="h-3.5 w-3.5 text-[#1d1d1f] dark:text-white" />}
-                </button>
+                </a>
               );
             })}
           </motion.div>
