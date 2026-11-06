@@ -60,6 +60,7 @@
   },
   "LanguageToggle": {
     "label": "Language",
+    "ar": "Arabic",
     "en": "English",
     "fa": "Persian"
   },
