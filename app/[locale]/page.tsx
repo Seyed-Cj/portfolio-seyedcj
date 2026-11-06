@@ -1,6 +1,5 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
 import { SectionProvider, useSection } from "@/components/context/section-context";
 import { Background } from "@/components/effects/background";
 import { FloatingNav } from "@/components/navigation/floating-nav";
@@ -10,29 +9,49 @@ import { Experience } from "@/components/sections/experience";
 import { Projects } from "@/components/sections/projects";
 import { Skills } from "@/components/sections/skills";
 import { Contact } from "@/components/sections/contact";
+import { cn } from "@/lib/utils";
 
-const sections = [Hero, About, Experience, Projects, Skills, Contact];
-
-const ease = [0.25, 0.4, 0.25, 1] as const;
+const sectionList = [
+  { id: "hero", Component: Hero },
+  { id: "about", Component: About },
+  { id: "experience", Component: Experience },
+  { id: "projects", Component: Projects },
+  { id: "skills", Component: Skills },
+  { id: "contact", Component: Contact },
+] as const;
 
 function Sections() {
   const { current } = useSection();
-  const ActiveSection = sections[current];
 
   return (
     <main className="relative h-screen w-full overflow-hidden">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={current}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.5, ease }}
-          className="absolute inset-0"
-        >
-          <ActiveSection />
-        </motion.div>
-      </AnimatePresence>
+      {sectionList.map(({ id, Component }, index) => {
+        const isActive = current === index;
+        const isPast = index < current;
+        return (
+          <div
+            key={id}
+            className={cn(
+              "absolute inset-0 transition-all duration-500 ease-[cubic-bezier(0.25,0.4,0.25,1)]",
+              isActive
+                ? "pointer-events-auto z-10 translate-y-0 opacity-100"
+                : "pointer-events-none -z-10 opacity-0",
+              !isActive && (isPast ? "-translate-y-5" : "translate-y-5"),
+            )}
+            aria-hidden={!isActive}
+            inert={!isActive ? true : undefined}
+          >
+            <Component />
+          </div>
+        );
+      })}
+      <noscript>
+        <style>{`
+          main { height: auto !important; overflow: visible !important; }
+          main > div { position: relative !important; opacity: 1 !important; transform: none !important; pointer-events: auto !important; min-height: 100vh; }
+          html, body { overflow: auto !important; height: auto !important; }
+        `}</style>
+      </noscript>
     </main>
   );
 }
