@@ -2,13 +2,10 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { motion, AnimatePresence } from "framer-motion";
 import { Globe, ChevronUp, ChevronDown, Check } from "lucide-react";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
-
-const ease = [0.25, 0.4, 0.25, 1] as const;
 
 const nativeLabels: Record<string, string> = {
   fa: "فارسی",
@@ -68,53 +65,47 @@ export function LanguageSwitcher() {
 
   return (
     <div ref={containerRef} className="relative">
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.15, ease }}
-            className="absolute top-full mt-2 flex min-w-35 flex-col gap-1 rounded-2xl border border-black/10 bg-white/95 p-1.5 shadow-2xl backdrop-blur-xl md:top-auto md:right-0 md:bottom-full md:left-auto md:mt-0 md:mb-2 md:origin-bottom-right md:bg-white/90 md:backdrop-blur-xl ltr:right-0 ltr:left-auto ltr:origin-top-right rtl:right-auto rtl:left-0 rtl:origin-top-left dark:border-white/10 dark:bg-[#0a0a0a]/95 dark:md:bg-black/80"
-            role="menu"
-            aria-orientation="vertical"
-            aria-label={t("label")}
-          >
-            {routing.locales.map((loc) => {
-              const isActive = loc === currentLocale;
-              const href = `/${loc}`;
-              return (
-                <a
-                  key={loc}
-                  href={href}
-                  hrefLang={loc}
-                  lang={loc}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleSelectLocale(loc);
-                  }}
-                  role="menuitem"
-                  aria-current={isActive ? "true" : undefined}
-                  className={cn(
-                    "flex w-full cursor-pointer items-center justify-between gap-3 rounded-xl px-3 py-2 text-xs font-medium transition-all duration-200",
-                    isActive
-                      ? "bg-black/10 font-semibold text-[#1d1d1f] shadow-sm dark:bg-white/15 dark:text-white"
-                      : "text-[#515154] hover:bg-black/5 hover:text-[#1d1d1f] dark:text-white/60 dark:hover:bg-white/10 dark:hover:text-white",
-                  )}
-                >
-                  <span>{nativeLabels[loc] || t(loc as never)}</span>
-                  {isActive && <Check className="h-3.5 w-3.5 text-[#1d1d1f] dark:text-white" />}
-                </a>
-              );
-            })}
-          </motion.div>
+      <div
+        role="menu"
+        aria-orientation="vertical"
+        aria-label={t("label")}
+        className={cn(
+          "absolute top-full mt-2 flex min-w-35 flex-col gap-1 rounded-2xl border border-black/10 bg-white/95 p-1.5 shadow-2xl backdrop-blur-xl transition-all duration-200 md:top-auto md:right-0 md:bottom-full md:left-auto md:mt-0 md:mb-2 md:origin-bottom-right md:bg-white/90 md:backdrop-blur-xl ltr:right-0 ltr:left-auto ltr:origin-top-right rtl:right-auto rtl:left-0 rtl:origin-top-left dark:border-white/10 dark:bg-[#0a0a0a]/95 dark:md:bg-black/80",
+          isOpen
+            ? "pointer-events-auto visible scale-100 opacity-100"
+            : "pointer-events-none invisible scale-95 opacity-0",
         )}
-      </AnimatePresence>
+      >
+        {routing.locales.map((loc) => {
+          const isActive = loc === currentLocale;
+          const href = `/${loc}`;
+          return (
+            <a
+              key={loc}
+              href={href}
+              hrefLang={loc}
+              lang={loc}
+              onClick={(e) => {
+                e.preventDefault();
+                handleSelectLocale(loc);
+              }}
+              role="menuitem"
+              aria-current={isActive ? "true" : undefined}
+              className={cn(
+                "flex w-full cursor-pointer items-center justify-between gap-3 rounded-xl px-3 py-2 text-xs font-medium transition-all duration-200",
+                isActive
+                  ? "bg-black/10 font-semibold text-[#1d1d1f] shadow-sm dark:bg-white/15 dark:text-white"
+                  : "text-[#515154] hover:bg-black/5 hover:text-[#1d1d1f] dark:text-white/60 dark:hover:bg-white/10 dark:hover:text-white",
+              )}
+            >
+              <span>{nativeLabels[loc] || t(loc as never)}</span>
+              {isActive && <Check className="h-3.5 w-3.5 text-[#1d1d1f] dark:text-white" />}
+            </a>
+          );
+        })}
+      </div>
 
-      <motion.button
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1.2, duration: 0.6 }}
+      <button
         onClick={toggleOpen}
         aria-expanded={isOpen}
         aria-haspopup="true"
@@ -137,7 +128,7 @@ export function LanguageSwitcher() {
             isOpen && "rotate-180",
           )}
         />
-      </motion.button>
+      </button>
     </div>
   );
 }
