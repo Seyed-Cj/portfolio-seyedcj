@@ -31,7 +31,7 @@ function Sections() {
   }, []);
 
   return (
-    <main className="relative h-screen w-full overflow-hidden">
+    <main className="relative h-dvh w-full overflow-hidden md:h-screen">
       {sectionList.map(({ id, Component }, index) => {
         const isActive = current === index;
         const isPast = index < current;

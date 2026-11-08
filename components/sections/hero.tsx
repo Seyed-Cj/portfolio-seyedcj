@@ -56,10 +56,10 @@ export function Hero() {
     locale === "fa" ? "seyed-amirmohammad-mousavi.pdf" : "Seyed-Amirmohammad-Mousavi-Resume-EN.pdf";
 
   return (
-    <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden px-4 sm:px-6">
+    <div className="relative flex h-full w-full flex-col items-center justify-start overflow-x-hidden overflow-y-auto px-4 pt-14 pb-[calc(var(--nav-height)+1.5rem+env(safe-area-inset-bottom,0px))] sm:px-6 sm:pt-16 md:justify-center md:overflow-hidden md:py-0">
       <Glow className="top-1/4 left-1/2 -translate-x-1/2" size={600} />
 
-      <div className="relative z-10 flex max-w-3xl flex-col items-center text-center">
+      <div className="relative z-10 my-auto flex max-w-3xl flex-col items-center text-center md:my-0">
         <motion.div custom={0} variants={fadeUp}>
           <Badge className="mb-8">{t("role")}</Badge>
         </motion.div>

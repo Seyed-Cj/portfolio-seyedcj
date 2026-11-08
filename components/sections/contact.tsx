@@ -59,10 +59,10 @@ export function Contact() {
   ];
 
   return (
-    <div className="relative flex h-full w-full items-center justify-center overflow-hidden px-4 sm:px-6">
+    <div className="relative flex h-full w-full items-start justify-center overflow-x-hidden overflow-y-auto px-4 pt-14 pb-[calc(var(--nav-height)+1.5rem+env(safe-area-inset-bottom,0px))] sm:px-6 sm:pt-16 md:items-center md:overflow-hidden md:py-0">
       <Glow className="right-0 bottom-0" size={400} />
 
-      <div className="relative z-10 mx-auto max-w-2xl text-center">
+      <div className="relative z-10 mx-auto my-auto max-w-2xl text-center md:my-0">
         <motion.div custom={0} variants={fadeUp}>
           <p className="mb-4 text-sm font-medium tracking-[0.2em] text-[#86868b] uppercase dark:text-white/60">
             {t("label")}
