@@ -1,10 +1,13 @@
 "use client";
 
 import { useEffect, useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Home, User, Briefcase, FolderKanban, Wrench, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useSection, SECTIONS } from "@/components/context/section-context";
+import { useNavVisibility } from "@/hooks/use-nav-visibility";
+
+const ease = [0.25, 0.4, 0.25, 1] as const;
 
 const navItems = [
   { id: 0, sectionId: "hero", icon: Home, label: "Home" },
@@ -17,6 +20,8 @@ const navItems = [
 
 export function FloatingNav() {
   const { current, goTo, next, prev } = useSection();
+  const { isVisible: isNavVisible, showNav } = useNavVisibility(current);
+  const shouldReduceMotion = useReducedMotion();
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -155,10 +160,21 @@ export function FloatingNav() {
 
       {/* Mobile: bottom horizontal nav */}
       <motion.nav
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2, duration: 0.6 }}
-        className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 md:hidden"
+        initial={false}
+        animate={
+          isNavVisible
+            ? { opacity: 1, y: 0 }
+            : { opacity: 0, y: shouldReduceMotion ? 0 : "calc(100% + 1.5rem)" }
+        }
+        transition={{ duration: 0.28, ease }}
+        onFocusCapture={showNav}
+        onMouseEnter={showNav}
+        onTouchStart={showNav}
+        aria-hidden={!isNavVisible ? "true" : undefined}
+        className={cn(
+          "fixed bottom-6 left-1/2 z-50 -translate-x-1/2 md:hidden",
+          !isNavVisible && "pointer-events-none",
+        )}
         aria-label="Section navigation"
       >
         <div className="flex gap-1 rounded-2xl border border-black/10 bg-white/85 p-2 shadow-xl shadow-black/10 backdrop-blur-xl dark:border-white/10 dark:bg-[#0a0a0a]/95 dark:shadow-2xl">
@@ -168,6 +184,7 @@ export function FloatingNav() {
               href={`#${sectionId}`}
               onClick={(e) => {
                 e.preventDefault();
+                showNav();
                 goTo(id);
                 window.history.replaceState(null, "", `#${sectionId}`);
               }}
